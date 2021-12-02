@@ -1,3 +1,38 @@
+.bg-tmb{
+  background-color: #C9C9C9;
+  border-radius: 20px;
+  padding: 20px 15px;
+  width: 50%;
+
+}
+.tmb-buku{
+  flex-direction: row;
+  justify-content: start;
+  margin-bottom: 30px;
+  margin-left: 10px;
+}
+.hd-tmb{
+  text-align: center;
+}
+.tmb input{
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  display: block;
+  background-color: #C9C9C9;
+  max-width: 740px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 10px;
+}
+.tmb p{
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.tmb button{
+  margin-top: 20px;
+}
+
 // NAVBAR
 #bg-nav {
     height: 60px;
@@ -8,26 +43,26 @@
     position: absolute;
     background: #ffffff;
     flex-wrap: wrap;
-    padding-bottom: 20px;
-}
-.nav {
+    padding-bottom: 10px;
+  }
+  .nav {
     color: #333333;
-}
-
-/* tulisan logo */
-.nav h1 {
+  }
+  
+  /* tulisan logo */
+  .nav h1 {
     bottom: 500px;
     height: 40px;
     float: left;
     padding: 9px 50px;
     font-family: "roboto";
-}
-.nav form {
+  }
+  .nav form {
     margin-bottom: 10px;
-}
-
-/* SEARCH */
-.nav form input {
+  }
+  
+  /* SEARCH */
+  .nav form input {
     border-top-width: 2px;
     border-right-width: 2px;
     border-bottom-width: 2px;
@@ -43,122 +78,92 @@
     height: 31px;
     font-size: 12px;
     font-family: "roboto";
-}
-
-/* tombol login dsb */
-.nav ul {
+  }
+  
+  /* tombol login dsb */
+  .nav ul {
     bottom: 15px;
     float: left;
     position: relative;
     font-family: "roboto";
-}
-.nav ul li {
+  }
+  .nav ul li {
     display: inline-block;
     margin: 10px;
     margin-top: 27px;
-}
-.nav ul li img {
+  }
+  .nav ul li img {
     bottom: 500px;
     height: 20px;
     margin: 10px;
-}
-.nav ul li a {
+  }
+  .nav ul li a {
     display: inline-block;
     text-decoration: none;
     color: #333333;
-}
-.nav2 ul {
+  }
+  .nav2 ul {
     position: relative;
     font-family: "roboto";
     margin-bottom: -5px;
-}
-.nav2 ul li {
+  }
+  .nav2 ul li {
     display: inline-block;
     margin: 10px;
-    margin-top: 27px;
-}
-
-.nav2 ul li a {
+    margin-top: 17px;
+  }
+  
+  .nav2 ul li a {
     display: inline-block;
     text-decoration: none;
     font-family: "Poppins", sans-serif;
     color: black;
     position: relative;
     padding: 0px 10px;
-}
-
-.nav2 ul li a:after {
+  }
+  
+  .nav2 ul li a:after {
     content: "";
     position: absolute;
     height: 3px;
     width: 0;
     left: 0;
     bottom: -5px;
-}
-.nav2 ul li a:hover {
-font-weight: bold;
-}
-.nav2 ul li a:hover::after {
+  }
+  .nav2 ul li a:hover {
+    font-weight: bold;
+  }
+  .nav2 ul li a:hover::after {
     width: 100%;
-}
-
-.bg-inf{
-    background-color: #C9C9C9;
-    border-radius: 20px;
-    padding: 20px 15px;
-    
-}
-.info-buku{
-    
-    flex-direction: row;
-    justify-content: start;
-
-    margin-bottom: 30px;
-    margin-left: 10px;
-}
-.info h1{
-    font-size: 54px;
-}
-.info ul{
+  }
   
-  width: 100%;
-  background-color: aqua;
-}
-.info ul li{
-  display: block;
-  
-}
-.sinopsis{
-  margin-top: 30px;
-}
-
-.footers{
+  .footers{
     background-color: #2c2c2c;
-}
-.Footer-menu {
+  }
+  .Footer-menu {
     background-color: #2c2c2c;
     color: #2c2c2c;
-}
-.Footer-menu .gradi a {
+  }
+  .Footer-menu .gradi a {
     background-color: #2c2c2c;
     color: #ffffff;
-}
-.list-unstyled{
+  }
+  .list-unstyled{
     background-color: #2c2c2c;
-}
-.gradi{
+  }
+  .gradi{
     background-color: #2c2c2c;
     color: white;
-}
-.get-connected {
+  }
+  .get-connected {
     color: #ffffff;
     background-color: #2c2c2c;
-.icon {
-    background-color: #2c2c2c;
-    letter-spacing: 18px;
-}
-.icon a {
-    background-color: #2c2c2c;
-    color: white;
-}
-}
+    .icon {
+      background-color: #2c2c2c;
+      letter-spacing: 18px;
+    }
+    .icon a {
+      background-color: #2c2c2c;
+      color: white;
+    }
+  }
