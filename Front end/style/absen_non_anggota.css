@@ -1,23 +1,29 @@
+.m-mid {
+  padding-left: 25%;
+  vertical-align: 300px;
+}
+
 .bg-tmb {
+  width: 450px;
   border-radius: 20px;
   padding: 20px 15px;
-  width: 50%;
 }
 
 .tmb-buku {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-bottom: 30px;
   margin-left: 10px;
 }
 
 .hd-tmb {
   text-align: center;
+  margin: auto;
+  width: 400px;
 }
 
 .tmb input {
@@ -27,7 +33,7 @@
   max-width: 740px;
   width: 100%;
   margin-top: 10px;
-  padding: 10px 40px;
+  padding: 10px 80px 10px 10px;
 }
 
 .tmb p {
@@ -69,6 +75,7 @@
 
 .nav form {
   margin-bottom: 10px;
+  padding-top: 4px;
 }
 
 /* SEARCH */
@@ -82,7 +89,7 @@
   background: #ffffff;
   margin: 14px auto;
   padding: 10px 10px;
-  width: 610px;
+  width: 450px;
   font-family: "roboto";
   margin-bottom: -100px;
   height: 31px;

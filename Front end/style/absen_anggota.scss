@@ -1,24 +1,20 @@
 .bg-tmb{
-    
-    border-radius: 20px;
-    padding: 20px 15px;
-    width: 50%;
-  
+    width: 75%;
+    height: 50%;
   }
   .tmb-buku{
     flex-direction: row;
-    justify-content: start;
+    justify-content: center;
     margin-bottom: 30px;
-    margin-left: 10px;
-  }
-  .hd-tmb{
-    text-align: center;
+
+  .hd-tmb h1{
+    width: 300px;
+    margin-left: 40px;
   }
   .tmb input{
     border: none;
     display: block;
     background-color: #C4C4C4;
-    max-width: 740px;
     width: 100%;
     margin-top: 60px;
     padding: 10px 40px;
@@ -166,3 +162,4 @@
         color: white;
       }
     }
+  }
