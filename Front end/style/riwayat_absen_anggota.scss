@@ -37,7 +37,7 @@
     background: #ffffff;
     margin: 14px auto;
     padding: 10px 10px;
-    width: 610px;
+    width: 450px;
     font-family: "roboto";
     margin-bottom: -100px;
     height: 31px;
@@ -102,9 +102,16 @@ font-weight: bold;
     width: 100%;
 }
 
-
-.tmbl-non button form{
-    height: 100%;
+.tmbl-non{
+    padding-top: 70px;
+}
+.tmbl-non button{
+    font-family: "roboto";
+    letter-spacing: 2px;
+    width: 100px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
 }
 .table-abs table{
     border: 50px;

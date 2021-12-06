@@ -1,5 +1,5 @@
 .lupa-password {
-  height: 100vh;
+  height: 120vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -17,7 +17,7 @@
 .form-lupa-password {
   background-color: #F0F0F0;
   max-width: 740px;
-  width: 80vw;
+  width: 40vw;
   text-align: center;
   border-radius: 20px;
   padding: 30px 20px;
@@ -47,22 +47,5 @@
 
 .data-diri {
   padding: 30px;
-}
-
-.Footer-menu {
-  background-color: #2c2c2c;
-  color: white;
-}
-
-.Footer-menu .gradi a {
-  color: white;
-}
-
-.get-connected .icon {
-  letter-spacing: 18px;
-}
-
-.get-connected .icon a {
-  color: white;
 }
 /*# sourceMappingURL=signup.css.map */

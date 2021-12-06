@@ -1,48 +1,50 @@
-.bg-tmb {
-  border-radius: 20px;
-  padding: 20px 15px;
-  width: 50%;
+.section-peminjaman-buku {
+  padding-top: 80px;
+  padding-bottom: 100px;
 }
 
-.tmb-buku {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  margin-bottom: 30px;
-  margin-left: 10px;
-}
-
-.hd-tmb {
+h1 {
   text-align: center;
 }
 
-.tmb input {
-  border: none;
-  display: block;
+.anggota {
+  margin: 15px;
+}
+
+.btn {
+  margin: 15px;
+}
+
+.pjm {
+  text-align: center;
+  padding-top: 30px;
+  font-size: 18px;
+}
+
+.pjm button {
+  width: 150px;
+  height: 40px;
+}
+
+.dtl-anggota {
+  margin: 15px;
+}
+
+.btm-bor {
+  padding-top: 50px;
+  padding-bottom: 60px;
+}
+
+.anggota input {
   background-color: #C4C4C4;
-  max-width: 740px;
-  width: 50%;
-  margin-top: 10px;
-  padding: 10px 20px;
 }
 
-.tmb p {
-  padding-top: 20px;
-  margin-top: 40px;
-  font-size: 20px;
+.dtl-anggota input {
+  background-color: #D8EFFE;
 }
 
-.tmb button {
-  margin-top: 60px;
-  padding: 10px 80px;
-}
-
-.tmb-detail input {
-  background-color: #0099FA;
+.dtl-buku input {
+  background-color: #D8EFFE;
 }
 
 #bg-nav {
@@ -51,7 +53,6 @@
   top: 0px;
   left: 0px;
   right: 0px;
-  position: absolute;
   background: #ffffff;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -86,7 +87,7 @@
   background: #ffffff;
   margin: 14px auto;
   padding: 10px 10px;
-  width: 610px;
+  width: 450px;
   font-family: "roboto";
   margin-bottom: -100px;
   height: 31px;

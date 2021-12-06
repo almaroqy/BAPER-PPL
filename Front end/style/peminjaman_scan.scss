@@ -1,38 +1,41 @@
-.bg-tmb{
-    
-    border-radius: 20px;
-    padding: 20px 15px;
-    width: 50%;
-  
+.section-peminjaman-buku{
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+h1{
+  text-align: center;
+}
+.anggota{
+  margin: 15px;
+}
+.btn{
+  margin: 15px;
+}
+.pjm{
+  text-align: center;
+  padding-top: 30px;
+  font-size: 18px;
+  button{
+    width: 150px;
+    height: 40px;
   }
-  .tmb-buku{
-    flex-direction: row;
-    justify-content: start;
-    margin-bottom: 30px;
-    margin-left: 10px;
-  }
-  .hd-tmb{
-    text-align: center;
-  }
-  .tmb input{
-    border: none;
-    display: block;
-    background-color: #C4C4C4;
-    max-width: 740px;
-    width: 50%;
-    margin-top: 10px;
-    padding: 10px 20px;
-  }
-  .tmb p{
-    padding-top: 20px;
-    margin-top: 40px;
-    font-size: 20px;
-  }
-  .tmb button{
-    margin-top: 60px;
-    padding: 10px 80px;
-  }
-  
+}
+.dtl-anggota{
+margin: 15px;
+}
+.btm-bor{
+  padding-top: 50px;
+  padding-bottom: 60px;
+}
+.anggota input{
+  background-color: #C4C4C4;
+}
+.dtl-anggota input{
+  background-color: #D8EFFE;
+}
+.dtl-buku input{
+  background-color: #D8EFFE;
+}
   // NAVBAR
   #bg-nav {
       height: 60px;
@@ -40,7 +43,6 @@
       top: 0px;
       left: 0px;
       right: 0px;
-      position: absolute;
       background: #ffffff;
       flex-wrap: wrap;
       padding-bottom: 10px;
@@ -72,7 +74,7 @@
       background: #ffffff;
       margin: 14px auto;
       padding: 10px 10px;
-      width: 610px;
+      width: 450px;
       font-family: "roboto";
       margin-bottom: -100px;
       height: 31px;
