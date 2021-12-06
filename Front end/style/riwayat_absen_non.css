@@ -1,46 +1,3 @@
-.bg-tmb {
-  border-radius: 20px;
-  padding: 100px 15px;
-  width: 50%;
-  height: 50%;
-}
-
-.tmb-buku {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  margin-bottom: 30px;
-  margin-left: 10px;
-}
-
-.hd-tmb {
-  text-align: center;
-}
-
-.tmb input {
-  border: none;
-  display: block;
-  background-color: #C4C4C4;
-  max-width: 740px;
-  width: 100%;
-  margin-top: 60px;
-  padding: 10px 40px;
-}
-
-.tmb p {
-  font-size: 20px;
-  margin-bottom: 5px;
-}
-
-.tmb button {
-  margin-top: 60px;
-  padding: 10px 80px;
-}
-
 #bg-nav {
   height: 60px;
   width: 100%;
@@ -51,7 +8,7 @@
   background: #ffffff;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .nav {
@@ -125,7 +82,7 @@
 .nav2 ul li {
   display: inline-block;
   margin: 10px;
-  margin-top: 17px;
+  margin-top: 27px;
 }
 
 .nav2 ul li a {
@@ -151,6 +108,11 @@
 }
 
 .nav2 ul li a:hover::after {
+  width: 100%;
+}
+
+.table-abs table {
+  margin-top: 5%;
   width: 100%;
 }
 
@@ -191,4 +153,4 @@
   background-color: #2c2c2c;
   color: white;
 }
-/*# sourceMappingURL=absen_anggota.css.map */
+/*# sourceMappingURL=riwayat_absen_non.css.map */
