@@ -15,81 +15,36 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-    <link rel="stylesheet" href="Front end/style/detail_buku.css" />
+    <link rel="stylesheet" href="Front end/style/absen_anggota.css" />
     <title>Baper!</title>
 </head>
 
 <body>
-    <!-- NAVBAR -->
-    <nav id="bg-nav" class="">
-        <div class="container">
-            <div class="nav">
-                <h1><img src="Front end/image/Group 12.png" alt="logo"></h1>
-                <form action="">
-                    <i class="fas fa-search"></i>
-                    <input type="search" name="search" placeholder="SEARCH" />
-                </form>
-                <ul>
-                    <li><a href="#"><img src="Front end/image/user.png" alt="user">LOGIN</a></li>
-                    <li><a href="#"><img src="Front end/image/Vector.png" alt="Vector">NAMA PERPUS</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="nav2 border-bottom">
-            <div class="container">
-                <ul>
-                    <li>
-                        <a href="#">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">Riwayat Peminjaman</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
+    <?php
+    include('nav_admin.php');
+    ?>
     <header>
-        <div class="container" style="padding-top: 12%;">
-            <div class="bg-inf">
-                <div class="info-buku">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="cover">
-                                <img class="cover-buku" src="Front end/image/BukuDongeng.png" alt="">
-                            </div>
+        <div class="container">
+            <div class="bg-tmb">
+                <div class="tmb-buku">
+                    <form action="">
+                        <div class="hd-tmb">
+                            <h1>Absen Anggota</h1>
                         </div>
-                        <div class="col-md-8">
-                            <div class="info">
-                                <h1>
-                                    Dongeng Anak Pop Ice
-                                </h1>
-                                <p>Penulis: Niko Jiko</p>
-                                <p>Tahun Terbit : 2001</p>
-                                <p>Jumlah Copy : 5</p>
-                                <p>Kategori : Buku Cerita</p>
-                                <p>Letak Buku : B-001</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sinopsis">
-                        Sinopsis :
-                        <p class="sinopsis-text">
-                            Menyandang status jomblo ternyata membuat Jono merasa semakin resah, sehingga dirinya memutuskan untuk
-                            mengakhiri status tersebut secepatnya. Bersama Niko sahabatnya, Jono mulai melakukan berbagai upaya
-                            untuk mendapatkan pacar. Hingga suatu hari calon pacar potensial berhasil didapatkannya dari dunia maya.
-                        </p>
-                        <p class="sinopsis-text">
-                            Setelah berkenalan, Jono berharap bisa sampai ke tahap selanjutnya. Namun sayangnya, rencana tidak
-                            berjalan mulus. Akankah Jono kembali harus menjalani status jomblonya? Atau mungkin akan muncul
-                            keajaiban kenalan tersebut menjadi pacar pertamanya?
-                        </p>
-                    </div>
+                </div>
+                <div class="tmb">
+                    <input type="text">
+                </div>
+
+                <div class="button-submit">
+                    <button type="submit" class="btn btn-dark">Submit</button>
                 </div>
             </div>
+            </form>
+        </div>
+        </div>
         </div>
     </header>
-
     <footer class="Footer-menu mt-5 border-top" id="Section-footer">
         <div class="container" style="background-color: #2c2c2c;">
             <div class="footers pt-4 pb-4 pt-lg-5 pb-lg-5">
@@ -146,9 +101,10 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
     <script src="https://kit.fontawesome.com/5b9f1690ea.js" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
