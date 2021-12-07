@@ -101,7 +101,7 @@
                             <div class="col-12 col-md-6 col-lg-3 mb-2 get-connected">
                                 <h5 class="mb-3 pb-2 border-bottom">Social Media</h5>
                                 <div class="icon">
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.instagram.com/fahmialqdy_/"><i class="fab fa-instagram"></i></a>
                                     <a href="#"><i class="fab fa-linkedin"></i></a>
                                     <a href="#"><i class="fab fa-twitter"></i></a>
                                     <a href="#"><i class="fab fa-facebook-f"></i></a>

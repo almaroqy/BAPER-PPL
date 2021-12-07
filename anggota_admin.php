@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col">
                     <div class="tmb-book">
-                        <a href="" class="btn btn-success btn-xxl">Tambah Anggota</a>
+                        <a href="tambah_anggota.php" class="btn btn-success btn-xxl">Tambah Anggota</a>
                     </div>
                 </div>
             </div>

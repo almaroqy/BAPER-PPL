@@ -1,35 +1,30 @@
-.bg-tmb{
-    border-radius: 20px;
-    padding: 100px 15px;
-    width: 75%;
-    height: 50%;
+.section-contoh {
+  padding-top: 250px;
+  form {
+    .form-control{
+      background-color: #c4c4c4;
+      width: 40%;
+    }
   }
-  .tmb-buku{
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 30px;
+  .btn-submit{
+    width: 30%;
+  }
+  .bukan-anggota a{
+  font-family:"Roboto", sans-serif;
+  letter-spacing: 2px;
+  width: 100px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px ;
 
-  .hd-tmb h1{
-    width: 300px;
-    margin-left: 40px;
+  border: 1px black solid;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  background-color: #C4C4C4;
   }
-  .tmb input{
-    border: none;
-    display: block;
-    background-color: #C4C4C4;
-    width: 100%;
-    margin-top: 60px;
-    padding: 10px 40px;
-  }
-  .tmb p{
-    font-size: 20px;
-    margin-bottom: 5px;
-  }
-  .tmb button{
-    margin-top: 60px;
-    padding: 10px 80px;
-  }
-  
+}
   // NAVBAR
   #bg-nav {
       height: 60px;
@@ -69,7 +64,7 @@
       background: #ffffff;
       margin: 14px auto;
       padding: 10px 10px;
-      width: 610px;
+      width: 450px;
       font-family: "roboto";
       margin-bottom: -100px;
       height: 31px;
@@ -164,4 +159,3 @@
         color: white;
       }
     }
-  }

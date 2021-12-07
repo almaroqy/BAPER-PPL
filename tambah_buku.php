@@ -1,3 +1,28 @@
+<?php
+require_once('db_login.php');
+if (isset($_POST['tambah'])) {
+    $judul = $_POST["judul"];
+    $penulis = $_POST["penulis"];
+    $tahunterbit = $_POST["tahun-terbit"];
+    $jumlahcopy = $_POST["jumlah-copy"];
+    // filter_input(INPUT_POST, 'hospital', FILTER_SANITIZE_STRING);
+    $kategori = $_POST["kategori"];
+    $letakbuku = $_POST["letak-buku"];
+    $sinopsis = $_POST["sinopsis"];
+    $gambarbuku = $_POST["gambar-buku"];
+
+
+    $sql = "INSERT INTO buku (penulis,judul,sinopsis,jumlah_copy,kategori,letak_buku,tahun_terbit,gambar_buku) VALUES ('$judul','$penulis','$tahunterbit','$jumlahcopy','$kategori','$letakbuku','$sinopsis','$gambarbuku')";
+
+    //Kondisi apakah berhasil atau tidak
+    if (mysqli_query($db, $sql)) {
+        echo "New record created successfully";
+      } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($db);
+        exit;
+      }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +52,7 @@
             <div class="bg-tmb">
                 <div class="tmb-buku">
                     <div class="row">
-                        <form action="">
+                        <form action="" method="POST">
                             <div class="hd-tmb">
                                 <div class="col">
                                     <h1>Tambah Buku</h1>
@@ -35,32 +60,32 @@
                             </div>
                             <div class="tmb" style="padding-left: 10%; padding-right: 10%;">
                                 <div class="col">
-                                    <input type="text" placeholder="Judul Buku">
+                                    <input type="text" placeholder="Judul Buku" name="judul">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Penulis">
+                                    <input type="text" placeholder="Penulis" name="penulis">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Tahun Terbit">
+                                    <input type="text" placeholder="Tahun Terbit" name="tahun-terbit">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Jumlah Copy">
+                                    <input type="text" placeholder="Jumlah Copy" name="jumlah-copy">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Kategori">
+                                    <input type="text" placeholder="Kategori" name="kategori">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Letak Buku">
+                                    <input type="text" placeholder="Letak Buku" name="letak-buku">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Sinopsis">
+                                    <input type="text" placeholder="Sinopsis" name="sinopsis">
                                 </div>
                                 <div class="col">
                                     <p>Upload Cover Buku</p>
-                                    <input type="file">
+                                    <input type="file" name="gambar-buku">
                                 </div>
                                 <div class="col" style="padding-left: 120px;">
-                                    <button type="submit" class="btn btn-dark">Tambah</button>
+                                    <button type="submit" class="btn btn-dark" name="tambah">Tambah</button>
                                 </div>
                             </div>
                         </form>

@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col">
                 <div class="tmb-book" style="padding-left: 80% ;">
-                    <a href="" class="btn btn-success btn-xxl" >Tambah Buku</a>
+                    <a href="tambah_buku.php" class="btn btn-success btn-xxl" >Tambah Buku</a>
                 </div>
             </div>
         </div>

@@ -115,17 +115,23 @@
   padding-top: 70px;
 }
 
-.tmbl-non button {
-  font-family: "roboto";
+.tmbl-non a {
+  font-family: "Roboto", sans-serif;
   letter-spacing: 2px;
   width: 100px;
-  padding-top: 10px;
+  padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border-radius: 10px;
+  border: 1px black solid;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  background-color: #C4C4C4;
 }
 
 .table-abs table {

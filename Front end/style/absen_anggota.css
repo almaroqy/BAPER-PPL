@@ -1,49 +1,36 @@
-.bg-tmb {
-  border-radius: 20px;
-  padding: 100px 15px;
-  width: 75%;
-  height: 50%;
+.section-contoh {
+  padding-top: 250px;
 }
 
-.tmb-buku {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+.section-contoh form .form-control {
+  background-color: #c4c4c4;
+  width: 40%;
+}
+
+.section-contoh .btn-submit {
+  width: 30%;
+}
+
+.section-contoh .bukan-anggota a {
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 2px;
+  width: 100px;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-bottom: 30px;
-  /* tulisan logo */
-  /* SEARCH */
-  /* tombol login dsb */
-}
-
-.tmb-buku .hd-tmb h1 {
-  width: 300px;
-  margin-left: 40px;
-}
-
-.tmb-buku .tmb input {
-  border: none;
-  display: block;
+  border-radius: 10px;
+  border: 1px black solid;
+  text-align: center;
+  text-decoration: none;
+  color: black;
   background-color: #C4C4C4;
-  width: 100%;
-  margin-top: 60px;
-  padding: 10px 40px;
 }
 
-.tmb-buku .tmb p {
-  font-size: 20px;
-  margin-bottom: 5px;
-}
-
-.tmb-buku .tmb button {
-  margin-top: 60px;
-  padding: 10px 80px;
-}
-
-.tmb-buku #bg-nav {
+#bg-nav {
   height: 60px;
   width: 100%;
   top: 0px;
@@ -56,11 +43,12 @@
   padding-bottom: 10px;
 }
 
-.tmb-buku .nav {
+.nav {
   color: #333333;
 }
 
-.tmb-buku .nav h1 {
+/* tulisan logo */
+.nav h1 {
   bottom: 500px;
   height: 40px;
   float: left;
@@ -68,11 +56,12 @@
   font-family: "roboto";
 }
 
-.tmb-buku .nav form {
+.nav form {
   margin-bottom: 10px;
 }
 
-.tmb-buku .nav form input {
+/* SEARCH */
+.nav form input {
   border-top-width: 2px;
   border-right-width: 2px;
   border-bottom-width: 2px;
@@ -82,7 +71,7 @@
   background: #ffffff;
   margin: 14px auto;
   padding: 10px 10px;
-  width: 610px;
+  width: 450px;
   font-family: "roboto";
   margin-bottom: -100px;
   height: 31px;
@@ -90,44 +79,45 @@
   font-family: "roboto";
 }
 
-.tmb-buku .nav ul {
+/* tombol login dsb */
+.nav ul {
   bottom: 15px;
   float: left;
   position: relative;
   font-family: "roboto";
 }
 
-.tmb-buku .nav ul li {
+.nav ul li {
   display: inline-block;
   margin: 10px;
   margin-top: 27px;
 }
 
-.tmb-buku .nav ul li img {
+.nav ul li img {
   bottom: 500px;
   height: 20px;
   margin: 10px;
 }
 
-.tmb-buku .nav ul li a {
+.nav ul li a {
   display: inline-block;
   text-decoration: none;
   color: #333333;
 }
 
-.tmb-buku .nav2 ul {
+.nav2 ul {
   position: relative;
   font-family: "roboto";
   margin-bottom: -5px;
 }
 
-.tmb-buku .nav2 ul li {
+.nav2 ul li {
   display: inline-block;
   margin: 10px;
   margin-top: 17px;
 }
 
-.tmb-buku .nav2 ul li a {
+.nav2 ul li a {
   display: inline-block;
   text-decoration: none;
   font-family: "Poppins", sans-serif;
@@ -136,7 +126,7 @@
   padding: 0px 10px;
 }
 
-.tmb-buku .nav2 ul li a:after {
+.nav2 ul li a:after {
   content: "";
   position: absolute;
   height: 3px;
@@ -145,48 +135,48 @@
   bottom: -5px;
 }
 
-.tmb-buku .nav2 ul li a:hover {
+.nav2 ul li a:hover {
   font-weight: bold;
 }
 
-.tmb-buku .nav2 ul li a:hover::after {
+.nav2 ul li a:hover::after {
   width: 100%;
 }
 
-.tmb-buku .footers {
+.footers {
   background-color: #2c2c2c;
 }
 
-.tmb-buku .Footer-menu {
+.Footer-menu {
   background-color: #2c2c2c;
   color: #2c2c2c;
 }
 
-.tmb-buku .Footer-menu .gradi a {
+.Footer-menu .gradi a {
   background-color: #2c2c2c;
   color: #ffffff;
 }
 
-.tmb-buku .list-unstyled {
+.list-unstyled {
   background-color: #2c2c2c;
 }
 
-.tmb-buku .gradi {
+.gradi {
   background-color: #2c2c2c;
   color: white;
 }
 
-.tmb-buku .get-connected {
+.get-connected {
   color: #ffffff;
   background-color: #2c2c2c;
 }
 
-.tmb-buku .get-connected .icon {
+.get-connected .icon {
   background-color: #2c2c2c;
   letter-spacing: 18px;
 }
 
-.tmb-buku .get-connected .icon a {
+.get-connected .icon a {
   background-color: #2c2c2c;
   color: white;
 }
