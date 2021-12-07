@@ -33,8 +33,8 @@ if (isset($_POST["login"])) {
     } else {
       if ($result->num_rows > 0) { //login berhasil
         $row = $result->fetch_object();
-        $_SESSION['username'] = $email;
-        $_SESSION['iduser'] = $row->email;
+        $_SESSION['email'] = $email;
+        $_SESSION['username'] = $row->nama_user;
         if ($row->tipe == 1) {
           $_SESSION['kategori'] = 'admin';
           header('Location:index_admin.php');
