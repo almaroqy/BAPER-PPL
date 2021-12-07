@@ -1,17 +1,48 @@
 <?php
-session_start();
-if (isset($_POST['login'])) {
-  $email = $_POST['email'];
-  $pass = $_POST['password'];
-  echo $email . $pass;
-}
+  require_once('db_login.php');
+  if (isset($_POST["login"])) {
+      $valid = TRUE;
+      //cek validasi email
+      $email = isset($_POST['email']) ? $_POST['email'] : '';
+      if ($email == '') {
+          $error_email = "email is required";
+          $valid = FALSE;
+      } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+          $error_email = "Invalid NIM format";
+          $valid = FALSE;
+      }
+      //cek validasi password
+      $password = test_input($_POST['password']);
+      if ($password == '') {
+          $error_password = "Password is required";
+          $valid = FALSE;
+      }
 
-
-
-
-
+      //cek validasi
+      if ($valid) {
+          //asign a query
+          $query = "SELECT * FROM user WHERE email='" . $email . "' AND password='" . md5($password) . "' ";
+          //Execute the query
+          $result = $db->query($query);
+          if (!$result) {
+              die("Could not query the database: <br />" . $db->error);
+          } else {
+              if ($result->num_rows > 0) { //login berhasil
+                  $row = $result->fetch_object();
+                  $_SESSION['username'] = $email;
+                  $_SESSION['kategori'] = 'user';
+                  $_SESSION['iduser'] = $row->email;
+                  header('Location:index.php');
+              } else {
+                  $error_password = "Combination username and password are not correct.";
+              }
+          }
+          $db->close();
+      }
+  }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,14 +73,20 @@ if (isset($_POST['login'])) {
         <div class="silahkan-masuk">
           Silahkan Masuk
         </div>
-        <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplate="off">
           <div class="margin form-group">
-            <input required class="form-control" type="email" name="email" placeholder="Username/E-Mail">
+            <input required class="form-control" type="email" id="email" name="email" placeholder="Username/E-Mail" value="<?php if (isset($email)) {echo $email;}?>">
+
+              <div class="text-danger"><?php if (isset($error_email)) {echo $error_email;} ?></div>
+
           </div>
           <div class="margin form-group">
             <ul class="list-unstyled">
               <li>
-                <input required class="form-control" type="password" name="password" placeholder="Password">
+                <input required class="form-control" type="password" id="password" name="password" placeholder="Password">
+
+                <div class="text-danger"><?php if (isset($error_password)) {echo $error_password;} ?></div>
+
               </li>
             </ul>
             <div class="ganti-password">
@@ -58,12 +95,12 @@ if (isset($_POST['login'])) {
             <div class="row">
               <div class="col">
                 <div class=" text-start ">
-                  <a href="http://" style="text-decoration: none;color:black;font-size:small">Daftar</a>
+                  <a href="signup.php" style="text-decoration: none;color:black;font-size:small">Daftar</a>
                 </div>
               </div>
               <div class="col">
                 <div class=" text-end ">
-                  <a href="#" style="text-decoration: none;color:black;font-size:small">Lupa Passwddddord</a>
+                  <a href="lupa_password.php" style="text-decoration: none;color:black;font-size:small">Lupa Password</a>
                 </div>
               </div>
             </div>
@@ -75,5 +112,4 @@ if (isset($_POST['login'])) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/5b9f1690ea.js" crossorigin="anonymous"></script>
 </body>
-
 </html>
