@@ -22,7 +22,7 @@
             <div class="container ">
                 <ul>
                     <li>
-                        <a href="#">List Buku</a>
+                        <a href="index_admin.php">List Buku</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -30,6 +30,7 @@
                             Absen
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="absen_anggota.php">Absen</a></li>
                             <li><a class="dropdown-item" href="riwayat_absen_anggota.php">Riwayat Absen</a></li>
                         </ul>
                     </li>
