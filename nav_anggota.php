@@ -34,10 +34,12 @@ session_start();
     <div class="container">
       <ul>
         <li>
-          <a href="#">Home</a>
+          <a href="index.php">Home</a>
         </li>
         <li>
-          <a href="#">Riwayat Peminjaman</a>
+          <?php 
+            if (isset($_SESSION['username'])) echo "<a href=\"riwayat_peminjaman.php\">Riwayat Peminjaman</a>"
+          ?>
         </li>
       </ul>
     </div>
