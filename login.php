@@ -75,7 +75,7 @@
         </div>
         <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplate="off">
           <div class="margin form-group">
-            <input required class="form-control" type="email" id="email" name="email" placeholder="Username/E-Mail" value="<?php if (isset($email)) {echo $email;}?>">
+            <input required class="form-control" type="email" id="email" name="email" placeholder="E-Mail" value="<?php if (isset($email)) {echo $email;}?>">
 
               <div class="text-danger"><?php if (isset($error_email)) {echo $error_email;} ?></div>
 
