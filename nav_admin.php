@@ -11,8 +11,8 @@
                     <input type="search" name="search" placeholder="SEARCH" />
                 </form>
                 <ul>
-                    <li><a href="#"><img class="user" src="Front end/image/Mask Group.png" alt="user">ADMIN</a></li>
-                    <li><a href="#"><img class="logo" src="Front end/image/Vector.png" alt="Vector">PUSTAKAWAN</a></li>
+                    <li><a href="index_admin.php"><img class="user" src="Front end/image/Mask Group.png" alt="user">ADMIN</a></li>
+                    <li><img class="logo" src="Front end/image/Vector.png" alt="Vector">Perpustakaan</li>
                     <li><a href="#"><img class="logo" src="Front end/image/Group 102.png" alt="Vector">Pesan Baru</a>
                     </li>
                 </ul>
@@ -30,7 +30,7 @@
                             Absen
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Riwayat Absen</a></li>
+                            <li><a class="dropdown-item" href="riwayat_absen_anggota.php">Riwayat Absen</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -39,8 +39,8 @@
                             Peminjaman
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Pinjam Buku</a></li>
-                            <li><a class="dropdown-item" href="#">Riwayat Peminjaman</a></li>
+                            <li><a class="dropdown-item" href="peminjaman_buku.php">Pinjam Buku</a></li>
+                            <li><a class="dropdown-item" href="riwayat_peminjaman_admin.php">Riwayat Peminjaman</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -49,12 +49,12 @@
                             Pengembalian
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Kembalikan Buku</a></li>
-                            <li><a class="dropdown-item" href="#">Riwayat Pengembalian</a></li>
+                            <li><a class="dropdown-item" href="pengembalian_buku.php">Kembalikan Buku</a></li>
+                            <li><a class="dropdown-item" href="riwayat_pengembalian_admin.php">Riwayat Pengembalian</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="">Anggota</a>
+                        <a href="anggota_admin.php">Anggota</a>
                     </li>
                 </ul>
             </div>
