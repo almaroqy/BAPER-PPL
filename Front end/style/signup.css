@@ -45,6 +45,10 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
+ul.li{
+  margin-top: 10px;
+}
+
 .data-diri {
   padding: 30px;
 }
