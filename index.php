@@ -8,46 +8,18 @@
   <!-- FONT AWESOME -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300&family=Roboto+Mono:wght@100&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300&family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
   <link rel="stylesheet" href="Front end/style/index.css" />
   <title>Baper!</title>
 </head>
 
 <body>
-  <!-- NAVBAR -->
-  <nav id="bg-nav" class="">
-    <div class="container">
-      <div class="nav">
-        <h1><img src="Front end/image/Group 12.png" alt="logo"></h1>
-        <form action="">
-          <i class="fas fa-search"></i>
-          <input type="search" name="search" placeholder="SEARCH" />
-        </form>
-        <ul>
-          <li><a href="#"><img src="Front end/image/user.png" alt="user">LOGIN</a></li>
-          <li><a href="#"><img src="Front end/image/Vector.png" alt="Vector">NAMA PERPUS</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="nav2 border-bottom">
-      <div class="container">
-        <ul>
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">Riwayat Peminjaman</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <?php
+  include('nav_anggota.php');
+  ?>
   <!-- HEADER -->
   <header>
     <div class="rekomendasi text-center">
@@ -157,8 +129,7 @@
   </footer>
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
   <script src="https://kit.fontawesome.com/5b9f1690ea.js" crossorigin="anonymous"></script>
 </body>
