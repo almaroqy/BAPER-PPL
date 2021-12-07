@@ -63,7 +63,7 @@ if (isset($_POST['login'])) {
               </div>
               <div class="col">
                 <div class=" text-end ">
-                  <a href="#" style="text-decoration: none;color:black;font-size:small">Lupa Password</a>
+                  <a href="#" style="text-decoration: none;color:black;font-size:small">Lupa Passwddddord</a>
                 </div>
               </div>
             </div>
