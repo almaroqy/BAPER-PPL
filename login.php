@@ -37,11 +37,13 @@ if (isset($_POST["login"])) {
         $_SESSION['iduser'] = $row->email;
         if ($row->tipe == 1) {
           $_SESSION['kategori'] = 'admin';
+          header('Location:index_admin.php');
         } else {
           $_SESSION['kategori'] = 'user';
+          header('Location:index.php');
         }
 
-        header('Location:index.php');
+        
       } else {
         $error_password = "Combination email and password are not correct.";
       }
