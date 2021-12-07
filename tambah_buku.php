@@ -19,10 +19,10 @@ if (isset($_POST['tambah'])) {
     //Kondisi apakah berhasil atau tidak
     if (mysqli_query($db, $sql)) {
         echo "New record created successfully";
-      } else {
+    } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($db);
         exit;
-      }
+    }
 }
 ?>
 <!DOCTYPE html>

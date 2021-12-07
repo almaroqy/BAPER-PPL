@@ -42,8 +42,6 @@ if (isset($_POST["login"])) {
           $_SESSION['kategori'] = 'user';
           header('Location:index.php');
         }
-
-        
       } else {
         $error_password = "Combination email and password are not correct.";
       }
@@ -86,11 +84,11 @@ if (isset($_POST["login"])) {
         <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplate="off">
           <div class="margin form-group">
             <input class="form-control" type="text" id="email" name="email" placeholder="Email" value="<?php if (isset($email)) {
-                                                                                                            echo $email;
-                                                                                                          } ?>">
+                                                                                                          echo $email;
+                                                                                                        } ?>">
             <div class="text-danger" style="font-size: small; text-align: left;"><?php if (isset($error_email)) {
-                                        echo $error_email;
-                                      } ?></div>
+                                                                                    echo $error_email;
+                                                                                  } ?></div>
           </div>
           <div class="margin form-group">
             <ul class="list-unstyled">
@@ -98,8 +96,8 @@ if (isset($_POST["login"])) {
                 <input class="form-control" type="password" id="password" name="password" placeholder="Password">
 
                 <div class="text-danger" style="font-size: small; text-align: left;"><?php if (isset($error_password)) {
-                                            echo $error_password;
-                                          } ?></div>
+                                                                                        echo $error_password;
+                                                                                      } ?></div>
               </li>
             </ul>
             <div class="ganti-password">

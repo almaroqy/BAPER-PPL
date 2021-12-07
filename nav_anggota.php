@@ -13,7 +13,7 @@ session_start();
       </form>
       <ul>
         <li class="dropdown">
-          <a <?php if(isset($_SESSION['username'])) echo "class=\"dropdown-toggle\" data-bs-toggle=\"dropdown\""?> href="login.php" id="navbarDropdown" role="button" aria-expanded="false"><img src="Front end/image/user.png" alt="user">
+          <a <?php if (isset($_SESSION['username'])) echo "class=\"dropdown-toggle\" data-bs-toggle=\"dropdown\"" ?> href="login.php" id="navbarDropdown" role="button" aria-expanded="false"><img src="Front end/image/user.png" alt="user">
             <?php
             if (isset($_SESSION['username'])) {
               echo $_SESSION['username'];
@@ -37,8 +37,8 @@ session_start();
           <a href="index.php">Home</a>
         </li>
         <li>
-          <?php 
-            if (isset($_SESSION['username'])) echo "<a href=\"riwayat_peminjaman.php\">Riwayat Peminjaman</a>"
+          <?php
+          if (isset($_SESSION['username'])) echo "<a href=\"riwayat_peminjaman.php\">Riwayat Peminjaman</a>"
           ?>
         </li>
       </ul>
