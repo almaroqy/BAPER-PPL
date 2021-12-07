@@ -1,4 +1,6 @@
 <?php
+include('./balikkelogin.php');
+
 require_once('db_login.php');
 if (isset($_POST['tambah'])) {
     $judul = $_POST["judul"];

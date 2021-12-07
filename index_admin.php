@@ -1,8 +1,5 @@
 <?php
 include('./balikkelogin.php');
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
