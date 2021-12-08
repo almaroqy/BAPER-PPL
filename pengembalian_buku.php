@@ -1,5 +1,6 @@
 <?php
 include('./balikkelogin.php');
+require_once('db_login.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +19,115 @@ include('./balikkelogin.php');
     <link rel="stylesheet" href="Front end/style/peminjaman_scan.css" />
     <title>Baper!</title>
 </head>
+<?php
+if (isset($_GET["tambah"])) {
+    $valid = TRUE; //flag validasi
+
+    $idAnggota = isset($_GET['idAnggota']) ? $_GET['idAnggota'] : '';
+    if ($idAnggota == '') {
+        $error_idAnggota = "ID anggota harus diisi";
+        $valid = FALSE;
+    } else {
+        $query = "SELECT id_user from user where id_user=" . $idAnggota;
+        $hasil = $db->query($query);
+        if (!$hasil) {
+            die($db->error);
+        } elseif (mysqli_num_rows($hasil) == 0) {
+            $error_idAnggota = "ID anggota tidak ditemukan";
+            $valid = FALSE;
+        }
+    }
+
+    $idBuku = isset($_GET['idBuku']) ? $_GET['idBuku'] : '';
+    if ($idBuku == '') {
+        $error_idBuku = "ID buku harus diisi";
+        $valid = FALSE;
+    } else {
+        $query = "SELECT judul, jumlah_copy from buku where id_buku=" . $idBuku;
+        $hasil = $db->query($query);
+        if (!$hasil) {
+            die($db->error);
+        } else {
+            while ($row = $hasil->fetch_object()) {
+                $judulBuku = $row->judul;
+                $jumlahBuku = $row->jumlah_copy;
+            }
+            if (!isset($judulBuku)) {
+                $error_idBuku = "ID buku tidak ditemukan";
+                $valid = FALSE;
+            } elseif ($jumlahBuku == 0) {
+                $error_idBuku = "Stok buku habis";
+                $valid = FALSE;
+            }
+        }
+    }
+
+    $idBuku1 = isset($_GET['idBuku1']) ? $_GET['idBuku1'] : '';
+    $idBuku2 = isset($_GET['idBuku2']) ? $_GET['idBuku2'] : '';
+    $idBuku3 = isset($_GET['idBuku3']) ? $_GET['idBuku3'] : '';
+
+    if ($valid) {
+        $queryNamaAnggota = "SELECT nama_user FROM user WHERE id_user=" . $idAnggota;
+        $hasil = $db->query($queryNamaAnggota);
+        if (!$hasil) {
+            die($db->error);
+        } else {
+            while ($row = $hasil->fetch_object()) {
+                $namaAnggota = $row->nama_user;
+            }
+        }
+
+        if ($idBuku1 == '') {
+            $idBuku1 = $idBuku;
+        } elseif ($idBuku2 == '') {
+            $idBuku2 = $idBuku;
+        } elseif ($idBuku3 == '') {
+            $idBuku3 = $idBuku;
+        } else {
+            $error_idBuku4 = "Max 3 buku dalam 1 sesi peminjaman";
+            $valid = FALSE;
+        }
+    }
+}
+
+if (isset($_GET["submit"])) {
+    $idAnggota = isset($_GET['idAnggota']) ? $_GET['idAnggota'] : '';
+    $idBuku1 = isset($_GET['idBuku1']) ? $_GET['idBuku1'] : '';
+    $idBuku2 = isset($_GET['idBuku2']) ? $_GET['idBuku2'] : '';
+    $idBuku3 = isset($_GET['idBuku3']) ? $_GET['idBuku3'] : '';
+
+
+    if ($idBuku1 != '') {
+        if ($idBuku1)
+            $query1 = " UPDATE pinjam_buku inner join buku on pinjam_buku.id_buku = buku.id_buku SET tanggal_kembali = current_date WHERE id_peminjam= $idAnggota and id_buku = $idBuku1 limit 1";
+        $result1 = $db->query($query1);
+        if (!$result1) {
+            die("Could not query the database: <br />" . $db->error . '<br>Query1:' . $query1);
+        } else {
+            echo '<div class="alert alert-success alert-dismissible ms-5 me-5 mt-3 text-center d-flex justify-content-center" style="position: fixed; z-index:1; left: 30%" id="berhasil" >
+                                        <h4>Pengembalian buku berhasil ditambahkan</h4>
+                                        <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                                    </div>';
+        }
+    }
+
+    if ($idBuku2 != '') {
+        $query2 = " UPDATE pinjam_buku inner join buku on pinjam_buku.id_buku = buku.id_buku SET tanggal_kembali = current_date WHERE id_peminjam= $idAnggota and id_buku = $idBuku1 and id_pinjam limit 1";
+        $result2 = $db->query($query2);
+        if (!$result2) {
+            die("Could not query the database: <br />" . $db->error . '<br>Query2:' . $query2);
+        }
+    }
+    if ($idBuku3 != '') {
+        $query3 = " UPDATE pinjam_buku inner join buku on pinjam_buku.id_buku = buku.id_buku SET tanggal_kembali = current_date  WHERE id_peminjam= $idAnggota and id_buku = $idBuku1 and id_pinjam limit 1";
+        $result3 = $db->query($query3);
+        if (!$result3) {
+            die("Could not query the database: <br />" . $db->error . '<br>Query3:' . $query3);
+        }
+    }
+}
+
+?>
 
 <body>
     <!-- NAVBAR -->
@@ -27,48 +137,55 @@ include('./balikkelogin.php');
     <main>
         <section class="section-peminjaman-buku">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 btm-bor border">
-                        <div class="judul-text">
-                            <h1>
-                                Pengembalian Buku
-                            </h1>
-                        </div>
-                        <div class="input-id">
-                            <form action="">
+                <form method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
+                    <div class="row">
+                        <div class="col-lg-6 btm-bor border">
+                            <div class="judul-text">
+                                <h1>
+                                    Pengembalian Buku
+                                </h1>
+                            </div>
+                            <div class="input-id">
                                 <div class="mb-3 anggota">
                                     <label for="idAnggota" class="form-label">Id Anggota</label>
-                                    <input type="text" class="form-control" id="idAnggota">
+                                    <input type="text" class="form-control" id="idAnggota" name="idAnggota" value="<?php if (isset($idAnggota)) echo $idAnggota; ?>">
+                                    <div class="text-danger">
+                                        <?php if (isset($error_idAnggota)) echo $error_idAnggota; ?>
+                                    </div>
                                 </div>
                                 <div class="mb-3 anggota">
                                     <label for="idBuku" class="form-label">Id Buku</label>
-                                    <input type="text" placeholder="Pilih Buku" class="form-control" id="idBuku">
+                                    <input type="text" class="form-control" id="idBuku" name="idBuku">
+                                    <div class="text-danger">
+                                        <?php if (isset($error_idBuku)) echo $error_idBuku; ?>
+                                    </div>
                                 </div>
-                                <button type="submit" class="btn btn-dark ">Tambah</button>
-                            </form>
+                                <button type="submit" class="btn btn-dark" name="tambah" value="submit">Tambah</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 btm-bor border">
-                        <h1>
-                            Detail
-                        </h1>
-                        <form action="">
+                        <div class="col-lg-6 btm-bor border">
+                            <h1>
+                                Detail
+                            </h1>
                             <div class="mb-3 dtl-anggota">
                                 <label for="anggota" class="form-label">Anggota</label>
-                                <input type="text" class="form-control" id="anggota">
+                                <input type="text" class="form-control" id="anggota" value="<?php if (isset($namaAnggota)) echo $namaAnggota ?>">
                             </div>
                             <div class="mb-3 dtl-anggota ">
                                 <label for="idBuku" class="form-label">Buku</label>
-                                <input type="text" class="mb-1 form-control" id="idBuku">
-                                <input type="text" class="mb-1 form-control" id="idBuku">
-                                <input type="text" class="mb-1 form-control" id="idBuku">
+                                <input type="text" class="mb-1 form-control" id="idBuku1" name="idBuku1" value="<?php if (isset($idBuku1)) echo $idBuku1 ?>">
+                                <input type="text" class="mb-1 form-control" id="idBuku2" name="idBuku2" value="<?php if (isset($idBuku2)) echo $idBuku2 ?>">
+                                <input type="text" class="mb-1 form-control" id="idBuku3" name="idBuku3" value="<?php if (isset($idBuku3)) echo $idBuku3 ?>">
+                                <div class="text-danger">
+                                    <?php if (isset($error_idBuku4)) echo $error_idBuku4; ?>
+                                </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
-                <div class="pjm">
-                    <button type="submit" class="btn-dark text-center">Submit</button>
-                </div>
+                    <div class="pjm">
+                        <button type="submit" class="btn-dark text-center" name="submit" value="submit">Kembalikan</button>
+                    </div>
+                </form>
             </div>
             </div>
         </section>

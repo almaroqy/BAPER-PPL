@@ -14,7 +14,7 @@ if (isset($_POST['tambah'])) {
         // jika tak upload file
         $gambar = 'user.png';
     }
-    $query = $db->query('INSERT INTO user(nama_user,email,password,tanggal_lahir,alamat,tipe,gambar,hp) values("' . $nama . '","' . $email . '","' . $pwd . '","' . $tgl . '","' . $alamat . '", "2", "' . $gambar . '","' . $hp . '")');
+    $query = $db->query('INSERT INTO user(nama_user,email,password,tanggal_lahir,alamat,tipe,gambar,hp) values("' . $nama . '","' . $email . '","' . md5($pwd) . '","' . $tgl . '","' . $alamat . '", "2", "' . $gambar . '","' . $hp . '")');
     if (!$query) {
         die($db->error . $query);
     } else {
@@ -78,7 +78,7 @@ include('./balikkelogin.php');
                                     <input type="date" required name="tgl" placeholder="Tangal Lahir">
                                 </div>
                                 <div class="col">
-                                    <input type="number" required name="hp" placeholder="No HP">
+                                    <input type="text" required name="hp" placeholder="No HP">
                                 </div>
                                 <div class="col">
                                     <input type="text" required name="alamat" placeholder="Alamat">

@@ -1,5 +1,28 @@
 <?php
 include('./balikkelogin.php');
+include('./db_login.php');
+
+if (isset($_GET['submit'])) {
+    $idangg = $_GET['idanggota'];
+    $nama = $db->query('select nama_user from user where id_user=' . $idangg);
+    if (!$nama) {
+        die($db->error);
+    } else {
+        if (mysqli_num_rows($nama) == 0) {
+            $berhasil = 0;
+        } else {
+            while ($row = $nama->fetch_object()) {
+                $namanya = $row->nama_user;
+            }
+            $query = $db->query('insert into absenanggota(id_anggota,tanggal)values(' . $idangg . ',current_date)');
+            if (!$query) {
+                die($db->error);
+            } else {
+                $berhasil = 1;
+            }
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,23 +47,56 @@ include('./balikkelogin.php');
     include('nav_admin.php');
     ?>
     <main>
+
+
         <section class="section-contoh">
-            <center>
-                <div class="container">
+
+            <div class="container">
+                <center>
                     <div class="title-header mb-5">
                         <h2>Absen Anggota</h2>
                     </div>
-                    <form method="get">
+                    <?php if (isset($berhasil)) {
+                        if ($berhasil == 1) {
+                            echo '
+                        <div class="alert alert-success alert-dismissible ms-5 me-5 mt-3 text-center d-flex justify-content-center" role="alert" id="berhasil"  >
+                        <div class="col">
+                            <div class="row">
+                                <h4> ' . $namanya . '   </h4>
+                            </div>
+                            <div class="row">
+                                <p>Berhasil Login</p>
+                            </div>
+                        </div>   
+                            <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                        </div>';
+                        } else {
+                            echo '
+                        <div class="alert alert-danger alert-dismissible ms-5 me-5 mt-3 text-center d-flex justify-content-center" role="alert" id="berhasil"  >
+                        <div class="col">
+                            <div class="row">
+                                <h4> Anggota tidak ada </h4>
+                            </div>
+                            <div class="row">
+                                <p>Gagal Login</p>
+                            </div>
+                        </div>   
+                            <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                        </div>';
+                        }
+                    }; ?>
+
+                    <form id="absen" action="<?php $_SERVER['PHP_SELF'] ?>" method="GET">
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="namemember" aria-describedby="NameMember">
+                            <input type="text" id="idanggota" name="idanggota" class="form-control">
                         </div>
+                        <button type="submit" id="submit" name="submit" class="btn btn-dark btn-submit mt-3">SUBMIT</button>
                     </form>
-                    <button type="submit" class="btn btn-dark btn-submit mt-3">SUBMIT</button>
                     <div class="bukan-anggota mt-3">
                         <a class="" href="absen_non_anggota.php">Bukan Anggota</a>
                     </div>
-                </div>
-            </center>
+                </center>
+            </div>
         </section>
     </main>
     <?php
@@ -52,6 +108,18 @@ include('./balikkelogin.php');
     </script>
     <script src="https://kit.fontawesome.com/5b9f1690ea.js" crossorigin="anonymous"></script>
 
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <script>
+        var text = document.getElementById("idanggota");
+        var form = document.getElementById("submit");
+
+        text.onkeyup = function() {
+            if (text.value.length >= 6) {
+                event.preventDefault();
+                form.click();
+            }
+        }
+    </script>
 </body>
 
 </html>

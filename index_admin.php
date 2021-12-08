@@ -30,9 +30,9 @@ $kerr = $db->query($query);
         <div class="container" style="padding-top: 13%; ">
             <div class="row">
                 <div class="col">
-                    <div class="src-tmbh" style="padding-left: 10%;">
-                        <input type="search" name="search" placeholder="Cari Data Buku">
-                    </div>
+                    <form method="GET">
+                        <input type="text" name="search_title" id="search_title" placeholder="Cari Buku" class="form-control" value="" onkeyup="forIndex()">
+                    </form>
                 </div>
             </div>
         </div>
@@ -118,6 +118,7 @@ $kerr = $db->query($query);
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/5b9f1690ea.js" crossorigin="anonymous"></script>
+    <script src="ajax.js"></script>
 </body>
 
 </html>

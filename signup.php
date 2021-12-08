@@ -22,7 +22,7 @@ if (isset($_POST['daftar'])) {
                 // jika tak upload file
                 $gambar = 'user.png';
             }
-            $query = "insert into user (email,nama_user,password,gambar,hp,tanggal_lahir,alamat,tipe) values ('$email','$nama','$pwd','$gambar','$tlp','$tgl','$alamat','2')";
+            $query = "insert into user (email,nama_user,password,gambar,hp,tanggal_lahir,alamat,tipe) values ('$email','$nama',md5('$pwd'),'$gambar','$tlp','$tgl','$alamat','2')";
             $aw = $db->query($query);
             if (!$aw) {
                 $gagal = ($db->error . $query);
@@ -109,7 +109,7 @@ if (isset($_POST['daftar'])) {
                                 <input required class="form-control" type="date" name="tgl" placeholder="Tanggal Lahir">
                             </li>
                             <li>
-                                <input required class="form-control" type="number" name="tlp" placeholder="No Telepon">
+                                <input required class="form-control" type="text" name="tlp" placeholder="No Telepon">
                             </li>
                             <li>
                                 <input required class="form-control" type="text" name="alamat" placeholder="Alamat">
