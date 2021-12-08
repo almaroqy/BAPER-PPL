@@ -19,6 +19,10 @@
 <body>
     <!-- NAVBAR -->
     <?php
+    session_start();
+    if (!isset($_SESSION['email']) || $_SESSION['kategori'] != 'user') {
+        header('Location: login.php');
+    }
     include('nav_anggota.php');
     ?>
     <main>
@@ -48,19 +52,22 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                                require_once('db_login.php');
-                                                $query = "SELECT * FROM pinjam_buku INNER JOIN buku ON pinjam_buku.id_buku=buku.id_buku INNER JOIN user ON pinjam_buku.id_peminjam= user.id_user WHERE pinjam_buku.status='meminjam'";
-                                                $result = mysqli_query($db, $query);
-                                                while ($row = $result->fetch_object()) {
-                                                    echo '<tr>';
-                                                    echo '<th>' . $row->id_pinjam . '</th>';
-                                                    $image = $row->gambar_buku;
-                                                    echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
-                                                    echo '<th>' . $row->judul . '</th>';
-                                                    echo '<th>' . $row->tanggal_pinjam . '</th>';
-                                                    echo '<th>' . $row->tanggal_kembali . '</th>';
-                                                    echo '</tr>';
-                                                }
+                                            require_once('db_login.php');
+                                            $query = "SELECT id_pinjam, gambar_buku, judul, tanggal_pinjam, batas_pinjam
+                                                        FROM pinjam_buku JOIN buku ON pinjam_buku.id_buku = buku.id_buku
+                                                        JOIN user ON pinjam_buku.id_peminjam = user.id_user
+                                                        WHERE nama_user='".$_SESSION['username']."' AND ISNULL(tanggal_kembali)";
+                                            $result = mysqli_query($db, $query);
+                                            while ($row = $result->fetch_object()) {
+                                                echo '<tr>';
+                                                echo '<th>' . $row->id_pinjam . '</th>';
+                                                $image = $row->gambar_buku;
+                                                echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
+                                                echo '<th>' . $row->judul . '</th>';
+                                                echo '<th>' . $row->tanggal_pinjam . '</th>';
+                                                echo '<th>' . $row->batas_pinjam . '</th>';
+                                                echo '</tr>';
+                                            }
                                             ?>
                                         </tbody>
                                     </table>
@@ -90,22 +97,30 @@
                                                 <th>Cover Buku</th>
                                                 <th>Judul Buku</th>
                                                 <th>Tanggal Pinjam</th>
+                                                <th>Tanggal Kembali</th>
+                                                <th>Batas Pengembalian</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                                require_once('db_login.php');
-                                                $query = "SELECT * FROM pinjam_buku INNER JOIN buku ON pinjam_buku.id_buku=buku.id_buku INNER JOIN user ON pinjam_buku.id_peminjam= user.id_user";
-                                                $result = mysqli_query($db, $query);
-                                                while ($row = $result->fetch_object()) {
-                                                    echo '<tr>';
-                                                    echo '<th>' . $row->id_pinjam . '</th>';
-                                                    $image = $row->gambar_buku;
-                                                    echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
-                                                    echo '<th>' . $row->judul . '</th>';
-                                                    echo '<th>' . $row->tanggal_pinjam . '</th>';
-                                                    echo '</tr>';
-                                                }
+                                            require_once('db_login.php');
+                                            $query = "SELECT id_pinjam, gambar_buku, judul, tanggal_pinjam, tanggal_kembali, batas_pinjam
+                                                        FROM pinjam_buku JOIN buku ON pinjam_buku.id_buku = buku.id_buku
+                                                        JOIN user ON pinjam_buku.id_peminjam = user.id_user
+                                                        WHERE nama_user='".$_SESSION['username']."' && !ISNULL(tanggal_kembali)
+                                                        ORDER BY id_pinjam DESC, tanggal_kembali DESC";
+                                            $result = mysqli_query($db, $query);
+                                            while ($row = $result->fetch_object()) {
+                                                echo '<tr>';
+                                                echo '<th>' . $row->id_pinjam . '</th>';
+                                                $image = $row->gambar_buku;
+                                                echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
+                                                echo '<th>' . $row->judul . '</th>';
+                                                echo '<th>' . $row->tanggal_pinjam . '</th>';
+                                                echo '<th>' . $row->tanggal_kembali . '</th>';
+                                                echo '<th>' . $row->batas_pinjam . '</th>';
+                                                echo '</tr>';
+                                            }
                                             ?>
                                         </tbody>
                                     </table>
