@@ -1,6 +1,6 @@
 <?php
 include('./db_login.php');
-$query = "select * from user";
+$query = "select * from user WHERE tipe=2";
 $kerr = $db->query($query);
 
 

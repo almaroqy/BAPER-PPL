@@ -30,54 +30,43 @@
     <section class="section-listproduct">
       <div class="container">
         <div class="row gx-3">
-          <div class="col-sm-6 col-md-6 col-lg-3 pt-3 pb-3">
-            <div class="product">
-              <div class="card" style="width: 241px">
-                <a href="#"><img src="Front end/image/BukuDongeng.png" class="card-img-top" /></a>
-                <div class="card-body">
-                  <p class="card-text text-center">Dongeng Anak Pop Ice</p>
+          <?php
+          include('./db_login.php');
+          $query = $db->query('select * from buku');
+          if (!$query) {
+            die($db->error);
+          } else {
+            while ($row = $query->fetch_object()) {
+              $judul = $row->judul;
+              $penulis = $row->penulis;
+              $tahunterbit = $row->tahun_terbit;
+              $jumlahcopy = $row->jumlah_copy;
+              $stokada = $row->stok_tersedia;
+              $kategori = $row->kategori;
+              $letakbuku = $row->letak_buku;
+              $gambarbuku = $row->gambar_buku;
+              ?>
+              <div class="col-sm-6 col-md-6 col-lg-3 pt-3 pb-3">
+              <div class="product">
+                <div class="card">
+                  <a  href="detail_buku.php?<?php echo 'id='.$row->id_buku ?>"><img src="Front end/image/<?php echo $gambarbuku; ?>" class="card-img-top" /></a>
+                  <div class="card-body">
+                    <p class="card-text text-center"> <?php echo $judul; ?></p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-3 pt-3 pb-3">
-            <div class="product">
-              <div class="card" style="width: 241px">
-                <a href="#"><img src="Front end/image/BukuFilosofi.png" class="card-img-top" /></a>
-                <div class="card-body">
-                  <p class="card-text text-center">Filosofi Pop Ice</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-3 pt-3 pb-3">
-            <div class="product">
-              <div class="card" style="width: 241px">
-                <a href="#"><img src="Front end/image/BukuHoror.png" class="card-img-top" /></a>
-                <div class="card-body">
-                  <p class="card-text text-center">Kisah Horor Pop Ice</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-3 pt-3 pb-3">
-            <div class="product">
-              <div class="card" style="width: 241px">
-                <a href="#"><img src="Front end/image/BukuIlmu.png" class="card-img-top" /></a>
-                <div class="card-body">
-                  <p class="card-text text-center">Ilmu Racik Pop Ice</p>
-                </div>
-              </div>
-            </div>
-          </div>
+            <?php }
+          } ?>  
+        
         </div>
       </div>
     </section>
   </main>
   <!-- FOOTER -->
   <?php
-    include('footer.php')
-    ?>
+  include('footer.php')
+  ?>
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">

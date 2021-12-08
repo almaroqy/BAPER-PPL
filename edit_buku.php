@@ -9,19 +9,18 @@ if (isset($_POST['edit'])) {
     $judul = $_POST['judul'];
     $penulis = $_POST['penulis'];
     $tahunterbit = $_POST['tahun-terbit'];
-    $kategori = $_POST["kategori"];
-    $letakbuku = $_POST["letak-buku"];
-    $sinopsis = $_POST["sinopsis"];
     $jumlahcopy = $_POST['copybuku'];
     $stokada = $_POST['stokada'];
+    $kategori = $_POST["kategori"];
+    $letakbuku = $_POST["letak-buku"];
     $gambarbuku = $_FILES['gambar-buku']['name'];
     $path = $_FILES['gambar-buku']['tmp_name'];
     move_uploaded_file($path, './Front end/image/' . $gambarbuku);
     if ($gambarbuku != '') {
         
-        $query = $db->query('UPDATE buku SET penulis="'.$penulis.'",judul="'.$judul.'",sinopsis="'.$sinopsis.'",jumlah_copy="'.$jumlahcopy.'",kategori="'.$kategori.'",letak_buku="'.$letakbuku.'",tahun_terbit="'.$tahunterbit.'",gambar_buku="'.$gambarbuku.'",stok_tersedia='.$stokada.' WHERE id_buku=' . $id);
+        $query = $db->query('UPDATE buku SET penulis="'.$penulis.'",judul="'.$judul.'",jumlah_copy="'.$jumlahcopy.'",kategori="'.$kategori.'",letak_buku="'.$letakbuku.'",tahun_terbit="'.$tahunterbit.'",gambar_buku="'.$gambarbuku.'",stok_tersedia='.$stokada.' WHERE id_buku=' . $id);
     } else {
-        $query = $db->query('UPDATE buku SET penulis="'.$penulis.'",judul="'.$judul.'",sinopsis="'.$sinopsis.'",jumlah_copy="'.$jumlahcopy.'",kategori="'.$kategori.'",letak_buku="'.$letakbuku.'",tahun_terbit="'.$tahunterbit.'",gambar_buku="book.png",stok_tersedia='.$stokada.' WHERE id_buku=' . $id);
+        $query = $db->query('UPDATE buku SET penulis="'.$penulis.'",judul="'.$judul.'",jumlah_copy="'.$jumlahcopy.'",kategori="'.$kategori.'",letak_buku="'.$letakbuku.'",tahun_terbit="'.$tahunterbit.'",gambar_buku="'.$gambarbuku.'",stok_tersedia='.$stokada.' WHERE id_buku=' . $id);
     }
     echo $query;
     if (!$query) {
@@ -44,7 +43,6 @@ if (isset($_POST['edit'])) {
             $stokada = $row->stok_tersedia;
             $kategori = $row->kategori;
             $letakbuku = $row->letak_buku;
-            $sinopsis = $row->sinopsis;
             $gambarbuku = $row->gambar_buku;
         }
     }
@@ -99,9 +97,6 @@ if (isset($_POST['edit'])) {
                                 </div>
                                 <div class="col">
                                     <input type="text" placeholder="Letak Buku" name="letak-buku" value="<?= $letakbuku?>">
-                                </div>
-                                <div class="col">
-                                    <input type="text" placeholder="Sinopsis" name="sinopsis" value="<?= $sinopsis?>">
                                 </div>
                                 <div class="col">
                                     <input type="text" placeholder="Jumlah Copy" name="copybuku" value="<?= $jumlahcopy?>">
