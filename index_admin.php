@@ -1,5 +1,8 @@
 <?php
+include('./db_login.php');
 include('./balikkelogin.php');
+$query = "select * from buku";
+$kerr = $db->query($query);
 ?>
 
 
@@ -34,6 +37,28 @@ include('./balikkelogin.php');
                 </div>
             </div>
         </div>
+        <?php
+        if (isset($_GET['berhasil'])) {
+            if ($_GET['berhasil'] == 'tmbh') {
+                echo '
+                    <div class="alert alert-success alert-dismissible ms-5 me-5 mt-3 text-center d-flex justify-content-center" id="berhasil"  >
+                        <h4>Berhasil Menambah Buku</h4>
+                    </div>';
+            }
+            if ($_GET['berhasil'] == 'edit') {
+                echo '
+                    <div class="alert alert-success alert-dismissible ms-5 me-5 mt-3 text-center d-flex justify-content-center" id="berhasil" >
+                        <h4>Berhasil Merubah Buku</h4>
+                        <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                    </div>';
+            }
+            if ($_GET['berhasil'] == 'hps') {
+                echo '
+                    <div class="alert alert-success alert-dismissible ms-5 me-5 mt-3 text-center d-flex justify-content-center" id="berhasil" >
+                        <h4>Berhasil Hapus Buku</h4>
+                    </div>';
+            }
+        } ?>
         <div class="container color-white" style="padding-top: 1%; ">
             <div class="row">
                 <div class="col">
@@ -61,24 +86,27 @@ include('./balikkelogin.php');
                         </thead>
                         <tbody>
                             <?php
-                            require_once('db_login.php');
-                            $query = "SELECT * FROM buku";
-                            $data = mysqli_query($db, $query);
-                            while ($row = $data->fetch_object()) {
-                                echo '<tr>';
-                                echo '<th>' . $row->id_buku . '</th>';
-                                $image = $row->gambar_buku;
-                                echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
-                                echo '<th>' . $row->penulis . '</th>';
-                                echo '<th>' . $row->judul . '</th>';
-                                echo '<th>' . $row->sinopsis . '</th>';
-                                echo '<th>' . $row->jumlah_copy . '</th>';
-                                echo '<th>' . $row->kategori . '</th>';
-                                echo '<th>' . $row->letak_buku . '</th>';
-                                echo '<th>' . $row->tahun_terbit . '</th>';
-                                echo '</tr>';
-                            }
-                            ?>
+                            if (!$kerr) {
+                                die($db->error);
+                            } else {
+                                while ($row = $kerr->fetch_object()) {
+                                    echo '<th>' . $row->id_buku . '</th>';
+                                    $image = $row->gambar_buku;
+                                    echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
+                                    echo '<th>' . $row->judul . '</th>';
+                                    echo '<th>' . $row->penulis . '</th>';
+                                    echo '<th>' . $row->tahun_terbit . '</th>';
+                                    echo '<th>' . $row->jumlah_copy . '</th>';
+                                    echo '<th>' . $row->stok_tersedia . '</th>';
+                                    echo '<td>
+                                    <div class="actn">
+                                        <a href="./edit_buku.php?id=' . $row->id_buku . '" class="btn btn-info btn-md">Edit</a>
+                                        <a href="./hapus_buku.php?id=' . $row->id_buku . '" class="btn btn-danger btn-md">Hapus</a>
+                                    </div>
+                                </td>
+                            </tr>';
+                                }
+                            } ?>
                         </tbody>
                     </table>
                 </div>

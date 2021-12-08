@@ -101,9 +101,8 @@ include('./balikkelogin.php');
                                     $foto = $row->gambar;
                                     $hp = $row->hp;
                                     $alamat = $row->alamat;
-
                                     echo '    
-                        <tr>
+                                 <tr>
                                 <td>' . $id . '</td>
                                 <td>
                                     <img src="./Front end/image/' . $foto . '" alt="" style="height: 90px;">

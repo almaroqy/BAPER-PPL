@@ -14,7 +14,7 @@ if (isset($_POST['tambah'])) {
         // jika tak upload file
         $gambar = 'user.png';
     }
-    $query = $db->query('INSERT INTO user(nama_user,email,password,tanggal_lahir,alamat,tipe,gambar,hp) values("' . $nama . '","' . $email . '","' . $pwd . '","' . $tgl . '","' . $alamat . '", "2", "' . $gambar . '","' . $hp . '")');
+    $query = $db->query('INSERT INTO user(nama_user,email,password,tanggal_lahir,alamat,tipe,gambar,hp) values("' . $nama . '","' . $email . '","' . md5($pwd) . '","' . $tgl . '","' . $alamat . '", "2", "' . $gambar . '","' . $hp . '")');
     if (!$query) {
         die($db->error . $query);
     } else {
