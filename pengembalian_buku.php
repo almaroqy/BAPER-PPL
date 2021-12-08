@@ -89,21 +89,17 @@ if (isset($_GET["tambah"])) {
         }
     }
 }
-$array = array();
-$i = 0;
+
 if (isset($_GET["submit"])) {
     $idAnggota = isset($_GET['idAnggota']) ? $_GET['idAnggota'] : '';
     $idBuku1 = isset($_GET['idBuku1']) ? $_GET['idBuku1'] : '';
     $idBuku2 = isset($_GET['idBuku2']) ? $_GET['idBuku2'] : '';
     $idBuku3 = isset($_GET['idBuku3']) ? $_GET['idBuku3'] : '';
-    $query = $db->query(" SELECT * FROM pinjam_buku  WHERE id_buku = $idBuku1 and id_peminjam=" . $idAnggota);
-    while ($row = $query->fetch_object()) {
-        $array[$i] = $row->id_pinjam;
-        echo $array[$i];
-    }
-    if ($idBuku1 != '') {
 
-        $query1 = " UPDATE pinjam_buku SET tanggal_kembali = current_date WHERE id_buku = $idBuku1 and id_peminjam=" . $idAnggota;
+
+    if ($idBuku1 != '') {
+        if ($idBuku1)
+            $query1 = " UPDATE pinjam_buku inner join buku on pinjam_buku.id_buku = buku.id_buku SET tanggal_kembali = current_date WHERE id_peminjam= $idAnggota and id_buku = $idBuku1 limit 1";
         $result1 = $db->query($query1);
         if (!$result1) {
             die("Could not query the database: <br />" . $db->error . '<br>Query1:' . $query1);
@@ -116,14 +112,14 @@ if (isset($_GET["submit"])) {
     }
 
     if ($idBuku2 != '') {
-        $query2 = " UPDATE pinjam_buku SET tanggal_kembali = current_date WHERE id_buku = $idBuku2 and id_peminjam=" . $idAnggota;
+        $query2 = " UPDATE pinjam_buku inner join buku on pinjam_buku.id_buku = buku.id_buku SET tanggal_kembali = current_date WHERE id_peminjam= $idAnggota and id_buku = $idBuku1 and id_pinjam limit 1";
         $result2 = $db->query($query2);
         if (!$result2) {
             die("Could not query the database: <br />" . $db->error . '<br>Query2:' . $query2);
         }
     }
     if ($idBuku3 != '') {
-        $query3 = " UPDATE pinjam_buku SET tanggal_kembali = current_date WHERE id_buku =$idBuku3 and id_peminjam=" . $idAnggota;
+        $query3 = " UPDATE pinjam_buku inner join buku on pinjam_buku.id_buku = buku.id_buku SET tanggal_kembali = current_date  WHERE id_peminjam= $idAnggota and id_buku = $idBuku1 and id_pinjam limit 1";
         $result3 = $db->query($query3);
         if (!$result3) {
             die("Could not query the database: <br />" . $db->error . '<br>Query3:' . $query3);
