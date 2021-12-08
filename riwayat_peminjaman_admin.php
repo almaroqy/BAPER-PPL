@@ -45,7 +45,11 @@ include('./balikkelogin.php');
                                     <tbody>
                                         <?php
                                             require_once('db_login.php');
-                                            $query = "SELECT * FROM pinjam_buku, buku, user";
+                                            $query = "SELECT id_pinjam, gambar_buku, judul, tanggal_pinjam, batas_pinjam, nama_user
+                                                        FROM pinjam_buku JOIN buku ON pinjam_buku.id_buku = buku.id_buku
+                                                        JOIN user ON pinjam_buku.id_peminjam = user.id_user
+                                                        ORDER BY pinjam_buku.tanggal_pinjam DESC";
+
                                             $result = mysqli_query($db, $query);
                                             while ($row = $result->fetch_object()) {
                                                 echo '<tr>';
@@ -54,7 +58,7 @@ include('./balikkelogin.php');
                                                 echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
                                                 echo '<th>' . $row->judul . '</th>';
                                                 echo '<th>' . $row->tanggal_pinjam . '</th>';
-                                                echo '<th>' . $row->tanggal_kembali . '</th>';
+                                                echo '<th>' . $row->batas_pinjam . '</th>';
                                                 echo '<th>' . $row->nama_user . '</th>';
                                                 echo '</tr>';
                                             }
