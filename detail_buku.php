@@ -1,3 +1,10 @@
+<?php
+$id = $_GET['id'];
+ require_once('db_login.php');
+ include('./balikkelogin.php');
+ $kerr = $db->query("select * from buku WHERE id_buku = $id");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +27,9 @@
     <!-- NAVBAR -->
     <?php
     include('nav_anggota.php');
+
+
+    
     ?>
 
     <header>
@@ -27,21 +37,23 @@
             <div class="bg-inf">
                 <div class="info-buku">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-4 ">
                             <div class="cover">
-                                <img class="cover-buku" src="Front end/image/BukuDongeng.png" alt="">
+                                
+                                <img width="300px" class="cover-buku" src="Front end/image/<?php
+                                while($row = $kerr->fetch_object()){ echo $row->gambar_buku?>">
                             </div>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="info">
-                                <h1>
-                                    Dongeng Anak Pop Ice
-                                </h1>
-                                <p>Penulis: Niko Jiko</p>
-                                <p>Tahun Terbit : 2001</p>
-                                <p>Jumlah Copy : 5</p>
-                                <p>Kategori : Buku Cerita</p>
-                                <p>Letak Buku : B-001</p>
+                                <?php
+                                echo '<h1>' . $row->judul . '</h1>';
+                                echo '<p> Penulis : ' . $row->penulis . '</p>';
+                                echo '<p> Tahun Terbit :' . $row->tahun_terbit . '</p>';
+                                echo '<p> Jumlah Copy :' . $row->jumlah_copy . '</p>';
+                                echo '<p> Letak Buku :' . $row->letak_buku . '</p>';
+                                echo '<p> Kategori :' . $row->kategori . '</p>';
+                                }?>
                             </div>
                         </div>
                     </div>

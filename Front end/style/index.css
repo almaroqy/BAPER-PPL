@@ -9,15 +9,16 @@
 
 .section-listproduct .card {
   width: 241px;
-  height: 350px;
+  height: 380px;
 }
 
 .section-listproduct .card img {
-  width: 240px;
+  height: 100px;
 }
 
 .section-listproduct .card .card-text {
   font-weight: 400;
+  padding-top: 100px;
   font-size: 18px;
   letter-spacing: 1px;
 }

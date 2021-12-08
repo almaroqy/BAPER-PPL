@@ -7,19 +7,17 @@ if (isset($_POST['tambah'])) {
     $penulis = $_POST["penulis"];
     $tahunterbit = $_POST["tahun-terbit"];
     $jumlahcopy = $_POST["jumlah-copy"];
+    $stokada = $_POST['stokada'];
     // filter_input(INPUT_POST, 'hospital', FILTER_SANITIZE_STRING);
     $kategori = $_POST["kategori"];
     $letakbuku = $_POST["letak-buku"];
     $gambarbuku = $_POST["gambar-buku"];
-
-    $sql = "INSERT INTO buku (penulis,judul,jumlah_copy,kategori,letak_buku,tahun_terbit,gambar_buku) VALUES ('$judul','$penulis','$tahunterbit','$jumlahcopy','$kategori','$letakbuku','$gambarbuku')";
+    
+    $sql = "INSERT INTO buku (penulis,judul,jumlah_copy,kategori,letak_buku,tahun_terbit,gambar_buku,stok_tersedia) VALUES ('$penulis','$judul','$jumlahcopy','$kategori','$letakbuku','$tahunterbit','$gambarbuku','$stokada')";
 
     //Kondisi apakah berhasil atau tidak
     if (mysqli_query($db, $sql)) {
-        echo '<div class="alert alert-success alert-dismissible ms-5 me-5 mt-3 text-center d-flex justify-content-center" style="position: fixed; z-index:1; left: 35%" id="berhasil" >
-                <h4>Buku berhasil ditambahkan</h4>
-                <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-                </div>';
+        header('Location: index_admin.php');
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($db);
         exit;
@@ -79,6 +77,9 @@ if (isset($_POST['tambah'])) {
                                 </div>
                                 <div class="col">
                                     <input type="text" placeholder="Letak Buku" name="letak-buku">
+                                </div>
+                                <div class="col">
+                                    <input type="text" placeholder="Stok Tersedia" name="stokada">
                                 </div>
                                 <div class="col">
                                     <p>Upload Cover Buku</p>

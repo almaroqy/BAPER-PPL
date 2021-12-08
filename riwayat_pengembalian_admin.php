@@ -59,7 +59,9 @@ include('./balikkelogin.php');
                                         }
 
                                         require_once('db_login.php');
-                                        $query = "SELECT * FROM user join pinjam_buku on user.id_user = pinjam_buku.id_peminjam JOIN buku on pinjam_buku.id_buku = buku.id_buku;";
+                                        $query = "SELECT * FROM user join pinjam_buku on user.id_user = pinjam_buku.id_peminjam
+                                                    JOIN buku on pinjam_buku.id_buku = buku.id_buku
+                                                    WHERE tanggal_kembali IS NOT NULL;";
                                         $result = mysqli_query($db, $query);
                                         while ($row = $result->fetch_object()) {
                                             echo '<tr>';
