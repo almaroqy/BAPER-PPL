@@ -44,7 +44,7 @@
             <div class="container text-white" style="background-color: #2c2c2c;">
                 <div class="row pt-2">
                     <div class="col-12">
-                        <p class="text-center my-1">&copy; 2021 | Perpustakann Baper</p>
+                        <p class="text-center my-1">&copy; 2021 | BAPER</p>
                     </div>
                 </div>
             </div>

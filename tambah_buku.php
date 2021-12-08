@@ -12,8 +12,7 @@ if (isset($_POST['tambah'])) {
     $letakbuku = $_POST["letak-buku"];
     $sinopsis = $_POST["sinopsis"];
     $gambarbuku = $_POST["gambar-buku"];
-
-
+    
     $sql = "INSERT INTO buku (penulis,judul,sinopsis,jumlah_copy,kategori,letak_buku,tahun_terbit,gambar_buku) VALUES ('$judul','$penulis','$tahunterbit','$jumlahcopy','$kategori','$letakbuku','$sinopsis','$gambarbuku')";
 
     //Kondisi apakah berhasil atau tidak

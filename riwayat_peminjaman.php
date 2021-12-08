@@ -44,20 +44,24 @@
                                                 <th>Judul Buku</th>
                                                 <th>Tanggal Pinjam</th>
                                                 <th>Batas Pengembalian</th>
-                                                <th>Denda</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                            </tr>
-
+                                            <?php
+                                                require_once('db_login.php');
+                                                $query = "SELECT * FROM pinjam_buku, buku, user";
+                                                $result = mysqli_query($db, $query);
+                                                while ($row = $result->fetch_object()) {
+                                                    echo '<tr>';
+                                                    echo '<th>' . $row->id_pinjam . '</th>';
+                                                    $image = $row->gambar_buku;
+                                                    echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
+                                                    echo '<th>' . $row->judul . '</th>';
+                                                    echo '<th>' . $row->tanggal_pinjam . '</th>';
+                                                    echo '<th>' . $row->tanggal_kembali . '</th>';
+                                                    echo '</tr>';
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -86,21 +90,23 @@
                                                 <th>Cover Buku</th>
                                                 <th>Judul Buku</th>
                                                 <th>Tanggal Pinjam</th>
-                                                <th>Denda</th>
-                                                <th>Total Denda</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                            </tr>
-
+                                            <?php
+                                                require_once('db_login.php');
+                                                $query = "SELECT * FROM pinjam_buku, buku, user";
+                                                $result = mysqli_query($db, $query);
+                                                while ($row = $result->fetch_object()) {
+                                                    echo '<tr>';
+                                                    echo '<th>' . $row->id_pinjam . '</th>';
+                                                    $image = $row->gambar_buku;
+                                                    echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
+                                                    echo '<th>' . $row->judul . '</th>';
+                                                    echo '<th>' . $row->tanggal_pinjam . '</th>';
+                                                    echo '</tr>';
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
