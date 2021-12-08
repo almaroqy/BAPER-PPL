@@ -43,37 +43,22 @@ include('./balikkelogin.php');
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>
-                                                <img src="../baper-1/Front end/image/BukuDongeng.png" alt="" style="height: 90px;">
-                                            </td>
-                                            <td>Pop Ice 1</td>
-                                            <td>11-11-2021</td>
-                                            <td>11-12-2021</td>
-                                            <td>Fahmi</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>
-                                                <img src="../baper-1/Front end/image/BukuIlmu.png" alt="" style="height: 90px;">
-                                            </td>
-                                            <td>Pop Ice 1</td>
-                                            <td>11-11-2021</td>
-                                            <td>11-12-2021</td>
-                                            <td>Fahmi</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>
-                                                <img src="../baper-1/Front end/image/BukuHoror.png" alt="" style="height: 90px;">
-                                            </td>
-                                            <td>Pop Ice 1</td>
-                                            <td>11-11-2021</td>
-                                            <td>11-12-2021</td>
-                                            <td>Fahmi</td>
-                                        </tr>
-
+                                        <?php
+                                            require_once('db_login.php');
+                                            $query = "SELECT * FROM pinjam_buku, buku, user";
+                                            $result = mysqli_query($db, $query);
+                                            while ($row = $result->fetch_object()) {
+                                                echo '<tr>';
+                                                echo '<th>' . $row->id_pinjam . '</th>';
+                                                $image = $row->gambar_buku;
+                                                echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
+                                                echo '<th>' . $row->judul . '</th>';
+                                                echo '<th>' . $row->tanggal_pinjam . '</th>';
+                                                echo '<th>' . $row->tanggal_kembali . '</th>';
+                                                echo '<th>' . $row->nama_user . '</th>';
+                                                echo '</tr>';
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
