@@ -1,14 +1,11 @@
 <?php
-<<<<<<< HEAD
 include('./db_login.php');
 $query = "select * from user";
 $kerr = $db->query($query);
-?>
 
-=======
+
 include('./balikkelogin.php');
 ?>
->>>>>>> 7fb0b59ec9cb0dd462b3ddb1c6029ee8ca2ec9a7
 <!DOCTYPE html>
 <html lang="en">
 
@@ -92,7 +89,6 @@ include('./balikkelogin.php');
                         </thead>
                         <tbody>
                             <?php
-<<<<<<< HEAD
                             if (!$kerr) {
                                 die($db->error);
                             } else {
@@ -126,32 +122,6 @@ include('./balikkelogin.php');
                                 }
                             } ?>
 
-=======
-                            
-                        require_once('db_login.php');
-                            $query = "SELECT * FROM user WHERE tipe=2";
-                            $data = mysqli_query($db, $query);
-                            while ($row = $data->fetch_object()) {
-                                echo '<tr>';
-                                echo '<th>' . $row->id_user . '</th>';
-                                $image = $row->gambar;
-                                echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
-                                echo '<th>' . $row->nama_user . '</th>';
-                                echo '<th>' . $row->tanggal_lahir . '</th>';
-                                echo '<th>' . $row->hp . '</th>';
-                                echo '<th>' . $row->alamat . '</th>';
-                                echo '
-                                <td>
-                                <div class="actn">
-                                    <a href="" class="btn btn-info btn-md">Edit</a>
-                                    <a href="" class="btn btn-danger btn-md">Hapus</a>
-                                    <a href="" class="btn btn-warning btn-md">Cetak Kartu</a>
-                                </div>
-                            </td>';
-                                echo '</tr>';
-                            }
-                                ?>
->>>>>>> 7fb0b59ec9cb0dd462b3ddb1c6029ee8ca2ec9a7
                         </tbody>
                     </table>
                 </div>
@@ -159,7 +129,7 @@ include('./balikkelogin.php');
         </div>
     </main>
 
-        <?php
+    <?php
     include('footer.php')
     ?>
     <!-- Option 1: Bootstrap Bundle with Popper -->

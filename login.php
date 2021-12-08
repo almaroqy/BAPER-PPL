@@ -4,7 +4,6 @@ require_once('db_login.php');
 
 if (isset($_POST["login"])) {
   $valid = true;
-  echo 'sasasa';
   $email = $_POST['email'];
   $password = $_POST['password'];
 
@@ -37,12 +36,8 @@ if (isset($_POST["login"])) {
     } else {
       if ($result->num_rows > 0) { //login berhasil
         $row = $result->fetch_object();
-<<<<<<< HEAD
-        $_SESSION['username'] = $name_user;
-=======
         $_SESSION['email'] = $email;
         $_SESSION['username'] = $row->nama_user;
->>>>>>> 7fb0b59ec9cb0dd462b3ddb1c6029ee8ca2ec9a7
         if ($row->tipe == 1) {
           $_SESSION['kategori'] = 'admin';
           header('Location:index_admin.php');
