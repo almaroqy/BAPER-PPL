@@ -100,8 +100,8 @@ if (isset($_GET["submit"])) {
     $idBuku3 = isset($_GET['idBuku3']) ? $_GET['idBuku3'] : '';
 
     if ($idBuku1 != '') {
-        $query1 = " INSERT INTO pinjam_buku (id_buku, id_peminjam, status, tanggal_pinjam) VALUES (" . $idBuku1 . "," .
-            $idAnggota . ", 'jomblo', current_date)";
+        $query1 = " INSERT INTO pinjam_buku (id_buku, id_peminjam, status, tanggal_pinjam, batas_pinjam) VALUES (" . $idBuku1 . "," .
+            $idAnggota . ", 'meminjam', current_date, date_add(current_date, INTERVAL 7 DAY))";
         $result1 = $db->query($query1);
         if (!$result1) {
             die("Could not query the database: <br />" . $db->error . '<br>Query1:' . $query1);
@@ -124,8 +124,8 @@ if (isset($_GET["submit"])) {
         $result1c = $db->query($query1c);
     }
     if ($idBuku2 != '') {
-        $query2 = " INSERT INTO pinjam_buku (id_buku, id_peminjam, status, tanggal_pinjam) VALUES (" . $idBuku2 . "," .
-            $idAnggota . ", 'jomblo', current_date)";
+        $query2 = " INSERT INTO pinjam_buku (id_buku, id_peminjam, status, tanggal_pinjam, batas_pinjam) VALUES (" . $idBuku2 . "," .
+            $idAnggota . ", 'meminjam', current_date, date_add(current_date, INTERVAL 7 DAY))";
         $result2 = $db->query($query2);
         if (!$result2) {
             die("Could not query the database: <br />" . $db->error . '<br>Query2:' . $query2);
@@ -143,8 +143,8 @@ if (isset($_GET["submit"])) {
         $result2c = $db->query($query2c);
     }
     if ($idBuku3 != '') {
-        $query3 = " INSERT INTO pinjam_buku (id_buku, id_peminjam, status, tanggal_pinjam) VALUES (" . $idBuku3 . "," .
-            $idAnggota . ", 'jomblo', current_date)";
+        $query3 = " INSERT INTO pinjam_buku (id_buku, id_peminjam, status, tanggal_pinjam, batas_pinjam) VALUES (" . $idBuku3 . "," .
+            $idAnggota . ", 'meminjam', current_date, date_add(current_date, INTERVAL 7 DAY))";
         $result3 = $db->query($query3);
         if (!$result3) {
             die("Could not query the database: <br />" . $db->error . '<br>Query3:' . $query3);
