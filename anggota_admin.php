@@ -61,56 +61,31 @@ include('./balikkelogin.php');
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
+                            <?php
+                            
+                        require_once('db_login.php');
+                            $query = "SELECT * FROM user WHERE tipe=2";
+                            $data = mysqli_query($db, $query);
+                            while ($row = $data->fetch_object()) {
+                                echo '<tr>';
+                                echo '<th>' . $row->id_user . '</th>';
+                                $image = $row->gambar;
+                                echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
+                                echo '<th>' . $row->nama_user . '</th>';
+                                echo '<th>' . $row->tanggal_lahir . '</th>';
+                                echo '<th>' . $row->hp . '</th>';
+                                echo '<th>' . $row->alamat . '</th>';
+                                echo '
                                 <td>
-                                    <img src="../baper-1/Front end/image/BukuDongeng.png" alt="" style="height: 90px;">
-                                </td>
-                                <td>Pop Ice 1</td>
-                                <td>Fahmi</td>
-                                <td>Fahmi Corp</td>
-                                <td>12</td>
-                                <td>
-                                    <div class="actn">
-                                        <a href="" class="btn btn-info btn-md">Edit</a>
-                                        <a href="" class="btn btn-danger btn-md">Hapus</a>
-                                        <a href="" class="btn btn-warning btn-md">Cetak Kartu</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    <img src="../baper-1/Front end/image/BukuIlmu.png" alt="" style="height: 90px;">
-                                </td>
-                                <td>Pop Ice 1</td>
-                                <td>Fahmi</td>
-                                <td>Fahmi Corp</td>
-                                <td>12</td>
-                                <td>
-                                    <div class="actn">
-                                        <a href="" class="btn btn-info btn-md">Edit</a>
-                                        <a href="" class="btn btn-danger btn-md">Hapus</a>
-                                        <a href="" class="btn btn-warning btn-md">Cetak Kartu</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td><img src="../baper-1/Front end/image/BukuHoror.png" alt="" style="height: 90px;"></td>
-                                <td>Pop Ice 1</td>
-                                <td>Fahmi</td>
-                                <td>Fahmi Corp</td>
-                                <td>12</td>
-                                <td>
-                                    <div class="actn">
-                                        <a href="" class="btn btn-info btn-md">Edit</a>
-                                        <a href="" class="btn btn-danger btn-md">Hapus</a>
-                                        <a href="" class="btn btn-warning btn-md">Cetak Kartu</a>
-                                    </div>
-                                </td>
-                            </tr>
-
+                                <div class="actn">
+                                    <a href="" class="btn btn-info btn-md">Edit</a>
+                                    <a href="" class="btn btn-danger btn-md">Hapus</a>
+                                    <a href="" class="btn btn-warning btn-md">Cetak Kartu</a>
+                                </div>
+                            </td>';
+                                echo '</tr>';
+                            }
+                                ?>
                         </tbody>
                     </table>
                 </div>
@@ -118,7 +93,7 @@ include('./balikkelogin.php');
         </div>
     </main>
 
-    <?php
+        <?php
     include('footer.php')
     ?>
     <!-- Option 1: Bootstrap Bundle with Popper -->
