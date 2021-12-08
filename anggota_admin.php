@@ -2,8 +2,10 @@
 include('./db_login.php');
 $query = "select * from user";
 $kerr = $db->query($query);
-?>
 
+
+include('./balikkelogin.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 

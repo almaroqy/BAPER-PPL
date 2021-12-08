@@ -4,7 +4,6 @@ require_once('db_login.php');
 
 if (isset($_POST["login"])) {
   $valid = true;
-  echo 'sasasa';
   $email = $_POST['email'];
   $password = $_POST['password'];
 
