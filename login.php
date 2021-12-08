@@ -29,7 +29,7 @@ if (isset($_POST["login"])) {
   //cek validasi
   if ($valid) {
     //asign a query
-    $query = "SELECT * FROM user WHERE email='" . $email . "' AND password='" . $password . "' ";
+    $query = "SELECT * FROM user WHERE email='" . $email . "' AND password='" . md5($password) . "' ";
     //Execute the query
     $result = $db->query($query);
     if (!$result) {
@@ -37,7 +37,12 @@ if (isset($_POST["login"])) {
     } else {
       if ($result->num_rows > 0) { //login berhasil
         $row = $result->fetch_object();
+<<<<<<< HEAD
         $_SESSION['username'] = $name_user;
+=======
+        $_SESSION['email'] = $email;
+        $_SESSION['username'] = $row->nama_user;
+>>>>>>> 7fb0b59ec9cb0dd462b3ddb1c6029ee8ca2ec9a7
         if ($row->tipe == 1) {
           $_SESSION['kategori'] = 'admin';
           header('Location:index_admin.php');
