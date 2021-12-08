@@ -19,7 +19,7 @@
                         <li><a class="dropdown-item" href="logout.php">LOGOUT</a></li>
                     </ul>
                 </li>
-                <li><img class="logo" src="Front end/image/Vector.png" alt="Vector">Perpustakaan</li>
+                <li><img class="logo" src="Front end/image/Vector.png" alt="Vector">BAPER</li>
                 <li><a href="#"><img class="logo" src="Front end/image/Group 102.png" alt="Vector">Pesan Baru</a>
                 </li>
             </ul>
