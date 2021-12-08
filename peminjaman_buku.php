@@ -58,7 +58,7 @@ if (isset($_GET["tambah"])) {
             } elseif ($jumlahBuku == 0) {
                 $error_idBuku = "Stok buku habis";
                 $valid = FALSE;
-            }   
+            }
         }
     }
 

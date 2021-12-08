@@ -43,37 +43,36 @@ include('./balikkelogin.php');
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>
-                                                <img src="../baper-1/Front end/image/BukuDongeng.png" alt="" style="height: 90px;">
-                                            </td>
-                                            <td>Pop Ice 1</td>
-                                            <td>11-11-2021</td>
-                                            <td>11-12-2021</td>
-                                            <td>Fahmi</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>
-                                                <img src="../baper-1/Front end/image/BukuIlmu.png" alt="" style="height: 90px;">
-                                            </td>
-                                            <td>Pop Ice 1</td>
-                                            <td>11-11-2021</td>
-                                            <td>11-12-2021</td>
-                                            <td>Fahmi</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>
-                                                <img src="../baper-1/Front end/image/BukuHoror.png" alt="" style="height: 90px;">
-                                            </td>
-                                            <td>Pop Ice 1</td>
-                                            <td>11-11-2021</td>
-                                            <td>11-12-2021</td>
-                                            <td>Fahmi</td>
-                                        </tr>
+                                        <?php
+                                        function denda($tgl1, $tgl2)
+                                        {
+                                            $batas = new DateTime($tgl1);
+                                            $kembali = new DateTime($tgl2);
+                                            $jarak = $kembali->diff($batas);
 
+                                            $selisih = $jarak->d;
+                                            if ($selisih > 7) {
+                                                return 1000 * $selisih;
+                                            } else {
+                                                return 0;
+                                            }
+                                        }
+
+                                        require_once('db_login.php');
+                                        $query = "SELECT * FROM user join pinjam_buku on user.id_user = pinjam_buku.id_peminjam JOIN buku on pinjam_buku.id_buku = buku.id_buku;";
+                                        $result = mysqli_query($db, $query);
+                                        while ($row = $result->fetch_object()) {
+                                            echo '<tr>';
+                                            echo '<th>' . $row->id_pinjam . '</th>';
+                                            $image = $row->gambar_buku;
+                                            echo '<th>' . '<img src="./Front end/image/' . $image . '" width="100">' . '</th>';
+                                            echo '<th>' . $row->judul . '</th>';
+                                            echo '<th>' . $row->tanggal_kembali . '</th>';
+                                            echo '<th>' . denda($row->batas_pinjam, $row->tanggal_kembali) . '</th>';
+                                            echo '<th>' . $row->nama_user . '</th>';
+                                            echo '</tr>';
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
