@@ -26,7 +26,7 @@ session_start();
             <li><a class="dropdown-item" href="logout.php">LOGOUT</a></li>
           </ul>
         </li>
-        <li><img src="Front end/image/Vector.png" alt="Vector">NAMA PERPUS</a></li>
+        <li><img src="Front end/image/Vector.png" alt="Vector">BAPER</a></li>
       </ul>
     </div>
   </div>

@@ -1,5 +1,54 @@
 <?php
+include('./db_login.php');
 include('./balikkelogin.php');
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+};
+
+if (isset($_POST['edit'])) {
+    $judul = $_POST['judul'];
+    $penulis = $_POST['penulis'];
+    $tahunterbit = $_POST['tahun-terbit'];
+    $kategori = $_POST["kategori"];
+    $letakbuku = $_POST["letak-buku"];
+    $sinopsis = $_POST["sinopsis"];
+    $jumlahcopy = $_POST['copybuku'];
+    $stokada = $_POST['stokada'];
+    $gambarbuku = $_FILES['gambar-buku']['name'];
+    $path = $_FILES['gambar-buku']['tmp_name'];
+    move_uploaded_file($path, './Front end/image/' . $gambarbuku);
+    if ($gambarbuku != '') {
+        
+        $query = $db->query('UPDATE buku SET penulis="'.$penulis.'",judul="'.$judul.'",sinopsis="'.$sinopsis.'",jumlah_copy="'.$jumlahcopy.'",kategori="'.$kategori.'",letak_buku="'.$letakbuku.'",tahun_terbit="'.$tahunterbit.'",gambar_buku="'.$gambarbuku.'",stok_tersedia='.$stokada.' WHERE id_buku=' . $id);
+    } else {
+        $query = $db->query('UPDATE buku SET penulis="'.$penulis.'",judul="'.$judul.'",sinopsis="'.$sinopsis.'",jumlah_copy="'.$jumlahcopy.'",kategori="'.$kategori.'",letak_buku="'.$letakbuku.'",tahun_terbit="'.$tahunterbit.'",gambar_buku="book.png",stok_tersedia='.$stokada.' WHERE id_buku=' . $id);
+    }
+    echo $query;
+    if (!$query) {
+        die($query . $db->error);
+    } else {
+        $db->close();
+        header('location: ./index_admin.php?berhasil=edit');
+    }
+} else {
+    echo $id;
+    $query = $db->query('select * from buku where id_buku=' . $id);
+    if (!$query) {
+        die($db->error);
+    } else {
+        while ($row = $query->fetch_object()) {
+            $judul = $row->judul;
+            $penulis = $row->penulis;
+            $tahunterbit = $row->tahun_terbit;
+            $jumlahcopy = $row->jumlah_copy;
+            $stokada = $row->stok_tersedia;
+            $kategori = $row->kategori;
+            $letakbuku = $row->letak_buku;
+            $sinopsis = $row->sinopsis;
+            $gambarbuku = $row->gambar_buku;
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +78,7 @@ include('./balikkelogin.php');
             <div class="bg-tmb">
                 <div class="tmb-buku">
                     <div class="row">
-                        <form action="">
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
                             <div class="hd-tmb">
                                 <div class="col">
                                     <h1>Edit Buku</h1>
@@ -37,32 +86,35 @@ include('./balikkelogin.php');
                             </div>
                             <div class="tmb" style="padding-left: 10%; padding-right: 10%;">
                                 <div class="col">
-                                    <input type="text" placeholder="Judul Buku">
+                                    <input type="text" placeholder="Judul Buku" name="judul" value="<?= $judul?>">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Penulis">
+                                    <input type="text" placeholder="Penulis" name="penulis" value="<?= $penulis?>">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Tahun Terbit">
+                                    <input type="text" placeholder="Tahun Terbit" name="tahun-terbit" value="<?= $tahunterbit?>">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Jumlah Copy">
+                                    <input type="text" placeholder="Kategori" name="kategori" value="<?= $kategori?>">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Kategori">
+                                    <input type="text" placeholder="Letak Buku" name="letak-buku" value="<?= $letakbuku?>">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Letak Buku">
+                                    <input type="text" placeholder="Sinopsis" name="sinopsis" value="<?= $sinopsis?>">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Sinopsis">
+                                    <input type="text" placeholder="Jumlah Copy" name="copybuku" value="<?= $jumlahcopy?>">
+                                </div>
+                                <div class="col">
+                                    <input type="text" placeholder="Stok Tersedia" name="stokada" value="<?= $stokada?>">
                                 </div>
                                 <div class="col">
                                     <p>Upload Cover Buku</p>
-                                    <input type="file">
+                                    <input type="file" name="gambar-buku">
                                 </div>
                                 <div class="col" style="padding-left: 120px;">
-                                    <button type="submit" class="btn btn-dark">Tambah</button>
+                                    <button type="submit" name="edit" class="btn btn-dark">Update</button>
                                 </div>
                             </div>
                         </form>
