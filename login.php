@@ -25,7 +25,7 @@ if (isset($_POST["login"])) {
   //cek validasi
   if ($valid) {
     //asign a query
-    $query = "SELECT * FROM user WHERE email='" . $email . "' AND password='" . $password . "' ";
+    $query = "SELECT * FROM user WHERE email='" . $email . "' AND password='" . md5($password) . "' ";
     //Execute the query
     $result = $db->query($query);
     if (!$result) {
