@@ -10,7 +10,7 @@ if (isset($_POST['tambah'])) {
     $email = $_POST['email'];
     $pwd = $_POST['pwd'];
     $hp = $_POST['hp'];
-    if ($gambar && $nama == "") {
+    if ($gambar == "") {
         // jika tak upload file
         $gambar = 'user.png';
     }

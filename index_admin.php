@@ -91,7 +91,7 @@ $kerr = $db->query($query);
                                 while ($row = $kerr->fetch_object()) {
                                     echo '<th>' . $row->id_buku . '</th>';
                                     $image = $row->gambar_buku;
-                                    echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
+                                    echo '<th>' . '<img src="./Front end/image/' . $image . '" width="100">' . '</th>';
                                     echo '<th>' . $row->judul . '</th>';
                                     echo '<th>' . $row->penulis . '</th>';
                                     echo '<th>' . $row->tahun_terbit . '</th>';
