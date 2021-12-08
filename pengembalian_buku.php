@@ -99,7 +99,7 @@ if (isset($_GET["submit"])) {
 
     if ($idBuku1 != '') {
         if ($idBuku1)
-            $query1 = " UPDATE pinjam_buku inner join buku on pinjam_buku.id_buku = buku.id_buku SET tanggal_kembali = current_date WHERE id_peminjam= $idAnggota and id_buku = $idBuku1 limit 1";
+            $query1 = " UPDATE pinjam_buku inner join buku on pinjam_buku.id_buku = buku.id_buku SET tanggal_kembali = current_date WHERE pinjam_buku.id_peminjam= $idAnggota and buku.id_buku = $idBuku1 limit 1";
         $result1 = $db->query($query1);
         if (!$result1) {
             die("Could not query the database: <br />" . $db->error . '<br>Query1:' . $query1);
@@ -112,14 +112,14 @@ if (isset($_GET["submit"])) {
     }
 
     if ($idBuku2 != '') {
-        $query2 = " UPDATE pinjam_buku inner join buku on pinjam_buku.id_buku = buku.id_buku SET tanggal_kembali = current_date WHERE id_peminjam= $idAnggota and id_buku = $idBuku1 and id_pinjam limit 1";
+        $query2 = " UPDATE pinjam_buku inner join buku on pinjam_buku.id_buku = buku.id_buku SET tanggal_kembali = current_date WHERE pinjam_buku.id_peminjam= $idAnggota and buku.id_buku = $idBuku1 and id_pinjam limit 1";
         $result2 = $db->query($query2);
         if (!$result2) {
             die("Could not query the database: <br />" . $db->error . '<br>Query2:' . $query2);
         }
     }
     if ($idBuku3 != '') {
-        $query3 = " UPDATE pinjam_buku inner join buku on pinjam_buku.id_buku = buku.id_buku SET tanggal_kembali = current_date  WHERE id_peminjam= $idAnggota and id_buku = $idBuku1 and id_pinjam limit 1";
+        $query3 = " UPDATE pinjam_buku inner join buku on pinjam_buku.id_buku = buku.id_buku SET tanggal_kembali = current_date  WHERE pinjam_buku.id_peminjam= $idAnggota and buku.id_buku = $idBuku1 and id_pinjam limit 1";
         $result3 = $db->query($query3);
         if (!$result3) {
             die("Could not query the database: <br />" . $db->error . '<br>Query3:' . $query3);
