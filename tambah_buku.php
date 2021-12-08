@@ -9,11 +9,17 @@ if (isset($_POST['tambah'])) {
     $jumlahcopy = $_POST["jumlah-copy"];
     $stokada = $_POST['stokada'];
     // filter_input(INPUT_POST, 'hospital', FILTER_SANITIZE_STRING);
+
     $kategori = $_POST["kategori"];
     $letakbuku = $_POST["letak-buku"];
-    $gambarbuku = $_POST["gambar-buku"];
-    
-    $sql = "INSERT INTO buku (penulis,judul,jumlah_copy,kategori,letak_buku,tahun_terbit,gambar_buku,stok_tersedia) VALUES ('$penulis','$judul','$jumlahcopy','$kategori','$letakbuku','$tahunterbit','$gambarbuku','$stokada')";
+    $gambarbuku = $_FILES['foto']['name'];
+    $path = $_FILES['foto']['tmp_name'];
+    move_uploaded_file($path, './Front end/image/' . $gambar);;
+    // if (empty($gambarbuku)) {
+    //     // jika tak upload file
+    //     $gambarbuku = 'book.png';
+    // }
+    $sql = "INSERT INTO buku (penulis,judul,jumlah_copy,kategori,letak_buku,tahun_terbit,gambar_buku,stok_tersedia) VALUES ('$penulis','$judul','$jumlahcopy','$kategori','$letakbuku','$tahunterbit','$gambarbuku','$jumlahcopy')";
 
     //Kondisi apakah berhasil atau tidak
     if (mysqli_query($db, $sql)) {
@@ -53,7 +59,7 @@ if (isset($_POST['tambah'])) {
             <div class="bg-tmb">
                 <div class="tmb-buku">
                     <div class="row">
-                        <form action="" method="POST">
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data" method="POST">
                             <div class="hd-tmb">
                                 <div class="col">
                                     <h1>Tambah Buku</h1>
@@ -79,11 +85,8 @@ if (isset($_POST['tambah'])) {
                                     <input type="text" placeholder="Letak Buku" name="letak-buku">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Stok Tersedia" name="stokada">
-                                </div>
-                                <div class="col">
                                     <p>Upload Cover Buku</p>
-                                    <input type="file" name="gambar-buku">
+                                    <input type="file" name="foto">
                                 </div>
                                 <div class="col" style="padding-left: 120px;">
                                     <button type="submit" class="btn btn-dark" name="tambah">Tambah</button>
