@@ -20,7 +20,8 @@
 }
 
 .btn {
-  width: 100%;
+  max-width: 250px;
+  width: 700px;
 }
 
 .form-lupa-password {
@@ -31,10 +32,9 @@
   border-radius: 20px;
   padding: 30px 20px;
 }
-/* muhan */
+
 .ganti-password {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding-top: 40px;
 }
 
 .margin {
