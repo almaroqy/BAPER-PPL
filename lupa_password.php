@@ -1,3 +1,46 @@
+<?php
+session_start();
+require_once('db_login.php');
+
+if (isset($_POST["submit"])){
+    $valid = true;
+    $hp = $_POST['hp'];
+    $password = $_POST['password'];
+    $konfirmasi_password = $_POST['konfirmasi_password'];
+
+    if ($password == '' or $konfirmasi_password == ''){
+        $error_password = "Password is required";
+    }elseif ($konfirmasi_password != $password){
+        $error_konfirmasi_password = "Password does not match";
+    }
+
+    if ($valid){
+        $query = $db->query('UPDATE user set password = "'.md5($password).'" where hp=' . $hp);
+    }
+    $result = $db->query($query);
+
+    if (!$result) {
+        die($result . $db->error);
+    } else {
+        if ($result->num_rows > 0) { //login berhasil
+          $row = $result->fetch_object();
+          $_SESSION['email'] = $email;
+          $_SESSION['username'] = $row->nama_user;
+          if ($row->tipe == 1) {
+            $_SESSION['kategori'] = 'admin';
+            header('Location:index_admin.php');
+          } else {
+            $_SESSION['kategori'] = 'user';
+            header('Location:index.php');
+          }
+        } else {
+          $error_password = "Combination email and password are not correct.";
+        }
+      }
+      $db->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,28 +67,35 @@
                 <div class="margin">
                     Lupa Password
                 </div>
-                <div class="margin form-group">
-                    <input class="form-control" type="email" name="email" placeholder="E-Mail">
-                </div>
-                <div class="margin button">
-                    <button type="button" class="btn btn-dark">Kirim Kode OTP Ke Email saya</button>
-                </div>
-                <div class="margin form-group">
-                    <ul class="list-unstyled">
-                        <li>
-                            <input class="form-control" type="text" name="otp" placeholder="Masukan Kode OTP">
-                        </li>
-                        <li>
-                            <input class="form-control" type="password" name="password" placeholder="Password baru">
-                        </li>
-                        <li>
-                            <input class="form-control" type="password" name="re-type" placeholder="Re-type Password">
-                        </li>
-                    </ul>
-                    <div class="ganti-password">
-                        <button type="button" class="btn btn-dark">Submit</button>
+                
+                <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                    <div class="margin form-group">
+                        <input class="form-control" type="text" name="konf_telp" placeholder="Masukan nomor telepon anda" required>
+                        <div class="text-danger" style="font-size: small; text-align: left;"><?php if (isset($error_telp)) {
+                                                                                            echo $error_telp;
+                                                                                        } ?></div>
                     </div>
-                </div>
+                    <br> <br>
+                    <div class="margin form-group">
+                        <ul class="list-unstyled">
+                            <li>
+                                <input class="form-control" type="password" name="password" placeholder="Password baru" required>
+                                <div class="text-danger" style="font-size: small; text-align: left;"><?php if (isset($error_password)) {
+                                                                                            echo $error_password;
+                                                                                        } ?></div>
+                            </li>
+                            <li>
+                                <input class="form-control" type="password" name="re-type" placeholder="Re-type Password" required>
+                                <div class="text-danger" style="font-size: small; text-align: left;"><?php if (isset($error_konfirmasi_password)) {
+                                                                                            echo $error_konfirmasi_password;
+                                                                                        } ?></div>
+                            </li>
+                        </ul>
+                        <div class="ganti-password">
+                            <button type="button" name = "submit" class="btn btn-dark">Submit</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </section>
     </main>
