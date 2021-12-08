@@ -9,7 +9,7 @@ session_start();
       <h1><img src="Front end/image/Group 12.png" alt="logo"></h1>
       <form action="">
         <i class="fas fa-search"></i>
-        <input type="search" name="search" placeholder="SEARCH" />
+        <input style="width: 450px;" type="search" name="search" placeholder="SEARCH" />
       </form>
       <ul>
         <li class="dropdown">
