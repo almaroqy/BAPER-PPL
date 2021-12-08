@@ -10,11 +10,11 @@ if (isset($_POST['tambah'])) {
     $email = $_POST['email'];
     $pwd = $_POST['pwd'];
     $hp = $_POST['hp'];
-    if ($_FILES['gambar']['name'] == "") {
+    if ($gambar && $nama == "") {
         // jika tak upload file
         $gambar = 'user.png';
     }
-    $query = $db->query('insert into user(nama_user,email,password,tanggal_lahir,alamat,gambar,hp) values("' . $nama . '","' . $email . '","' . $pwd . '","' . $tgl . '","' . $alamat . '","' . $gambar . '","' . $hp . '")');
+    $query = $db->query('INSERT INTO user(nama_user,email,password,tanggal_lahir,alamat,tipe,gambar,hp) values("' . $nama . '","' . $email . '","' . $pwd . '","' . $tgl . '","' . $alamat . '", "2", "' . $gambar . '","' . $hp . '")');
     if (!$query) {
         die($db->error . $query);
     } else {
