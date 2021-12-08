@@ -82,7 +82,7 @@ if (isset($_POST['daftar'])) {
                                     <p><? if (isset($gagal)) {
                                             echo $gagal;
                                         } ?></p>
-                                    <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                                        <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
                                 </div>';
                         }
                     }

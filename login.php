@@ -3,7 +3,10 @@ session_start();
 require_once('db_login.php');
 
 if (isset($_POST["login"])) {
-  $valid = TRUE;
+  $valid = true;
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
 
   //cek validasi email
   $email = isset($_POST['email']) ? $_POST['email'] : '';

@@ -1,4 +1,9 @@
 <?php
+include('./db_login.php');
+$query = "select * from user";
+$kerr = $db->query($query);
+
+
 include('./balikkelogin.php');
 ?>
 <!DOCTYPE html>
@@ -36,7 +41,29 @@ include('./balikkelogin.php');
         </div>
     </header>
     <main>
-        <div class="container color-white" style=" padding-left: 70%; width: 80%; ;">
+        <?php
+        if (isset($_GET['berhasil'])) {
+            if ($_GET['berhasil'] == 'tmbh') {
+                echo '
+                    <div class="alert alert-success alert-dismissible ms-5 me-5 mt-3 text-center d-flex justify-content-center" id="berhasil"  >
+                        <h4>Berhasil Menambah Anggota</h4>
+                    </div>';
+            }
+            if ($_GET['berhasil'] == 'edit') {
+                echo '
+                    <div class="alert alert-success alert-dismissible ms-5 me-5 mt-3 text-center d-flex justify-content-center" id="berhasil" >
+                        <h4>Berhasil Merubah Anggota</h4>
+                        <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                    </div>';
+            }
+            if ($_GET['berhasil'] == 'hps') {
+                echo '
+                    <div class="alert alert-success alert-dismissible ms-5 me-5 mt-3 text-center d-flex justify-content-center" id="berhasil" >
+                        <h4>Berhasil Hapus Anggota</h4>
+                    </div>';
+            }
+        } ?>
+        <div class="container color-white" style=" padding-left: 70%; width: 80%;">
             <div class="row">
                 <div class="col">
                     <div class="tmb-book">
@@ -54,7 +81,7 @@ include('./balikkelogin.php');
                                 <th>ID</th>
                                 <th>Foto</th>
                                 <th>Nama Lengkap</th>
-                                <th>Tempat Tanggal Lahir</th>
+                                <th>Tanggal Lahir</th>
                                 <th>No. HP</th>
                                 <th>Alamat</th>
                                 <th>Action</th>
@@ -62,30 +89,39 @@ include('./balikkelogin.php');
                         </thead>
                         <tbody>
                             <?php
-                            
-                        require_once('db_login.php');
-                            $query = "SELECT * FROM user WHERE tipe=2";
-                            $data = mysqli_query($db, $query);
-                            while ($row = $data->fetch_object()) {
-                                echo '<tr>';
-                                echo '<th>' . $row->id_user . '</th>';
-                                $image = $row->gambar;
-                                echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
-                                echo '<th>' . $row->nama_user . '</th>';
-                                echo '<th>' . $row->tanggal_lahir . '</th>';
-                                echo '<th>' . $row->hp . '</th>';
-                                echo '<th>' . $row->alamat . '</th>';
-                                echo '
+                            if (!$kerr) {
+                                die($db->error);
+                            } else {
+                                while ($row = $kerr->fetch_object()) {
+                                    $nama = $row->nama_user;
+                                    $id = $row->id_user;
+                                    $tgl = $row->tanggal_lahir;
+                                    $foto = $row->gambar;
+                                    $hp = $row->hp;
+                                    $alamat = $row->alamat;
+
+                                    echo '    
+                        <tr>
+                                <td>' . $id . '</td>
                                 <td>
-                                <div class="actn">
-                                    <a href="" class="btn btn-info btn-md">Edit</a>
-                                    <a href="" class="btn btn-danger btn-md">Hapus</a>
-                                    <a href="" class="btn btn-warning btn-md">Cetak Kartu</a>
-                                </div>
-                            </td>';
-                                echo '</tr>';
-                            }
-                                ?>
+                                    <img src="./Front end/image/' . $foto . '" alt="" style="height: 90px;">
+                                </td>
+                                <td>' . $nama . '</td>
+                                <td>' . $tgl . '</td>
+                                <td>' . $hp . '</td>
+                                <td>' . $alamat . '</td>
+                                <td>
+                                    <div class="actn">
+                                        <a href="./edit_anggota.php?id=' . $id . '" class="btn btn-info btn-md">Edit</a>
+                                        <a href="./hapus_anggota.php?id=' . $id . '" class="btn btn-danger btn-md">Hapus</a>
+                                        <a href="./cetak_kartu.php?id=' . $id . '" class="btn btn-warning btn-md">Cetak Kartu</a>
+                                    </div>
+                                </td>
+                            </tr>
+                           ';
+                                }
+                            } ?>
+
                         </tbody>
                     </table>
                 </div>
@@ -93,7 +129,7 @@ include('./balikkelogin.php');
         </div>
     </main>
 
-        <?php
+    <?php
     include('footer.php')
     ?>
     <!-- Option 1: Bootstrap Bundle with Popper -->

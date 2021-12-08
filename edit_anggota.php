@@ -1,6 +1,52 @@
 <?php
+include('./db_login.php');
 include('./balikkelogin.php');
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+};
+
+if (isset($_POST['ubah'])) {
+    $nama = $_POST['nama'];
+    $tgl = $_POST['tgl'];
+    $alamat = $_POST['alamat'];
+    $gambar = $_FILES['foto']['name'];
+    $path = $_FILES['foto']['tmp_name'];
+    move_uploaded_file($path, './Front end/image/' . $gambar);;
+    $email = $_POST['email'];
+    $pwd = $_POST['pwd'];
+    $hp = $_POST['hp'];
+    if ($gambar != '') {
+        $query = $db->query('update user set nama_user="' . $nama . '",tanggal_lahir="' . $tgl . '",alamat="' . $alamat . '",email="' . $email . '",password="' . $pwd . '",gambar="' . $gambar . '",hp="' . $hp . '" where id_user=' . $id);
+    } else {
+        $query = $db->query('update user set nama_user="' . $nama . '",tanggal_lahir="' . $tgl . '",alamat="' . $alamat . '",email="' . $email . '",password="' . $pwd . '",hp="' . $hp . '" where id_user = ' . $id);
+    }
+    echo $query;
+    if (!$query) {
+        die($query . $db->error);
+    } else {
+        $db->close();
+        header('location: ./anggota_admin.php?berhasil=edit');
+    }
+} else {
+    $query = $db->query('select * from user where id_user=' . $id);
+    if (!$query) {
+        die($db->error);
+    } else {
+        while ($row = $query->fetch_object()) {
+            $nama = $row->nama_user;
+            $tgl = $row->tanggal_lahir;
+            $alamat = $row->alamat;
+            $foto = $row->gambar;
+            $email = $row->email;
+            $pwd = $row->password;
+            $hp = $row->hp;
+        }
+    }
+}
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +75,7 @@ include('./balikkelogin.php');
             <div class="bg-tmb">
                 <div class="tmb-buku">
                     <div class="row">
-                        <form action="">
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
                             <div class="hd-tmb">
                                 <div class="col">
                                     <h1>Edit Anggota</h1>
@@ -37,32 +83,29 @@ include('./balikkelogin.php');
                             </div>
                             <div class="tmb" style="padding-left: 10%; padding-right: 10%;">
                                 <div class="col">
-                                    <input type="text" placeholder="Email">
+                                    <input type="email" placeholder="Email" name="email" value="<?= $email ?>">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Password">
+                                    <input type="text" placeholder="Password" name="pwd" value="<?= $pwd ?>">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Nama">
+                                    <input type="text" placeholder="Nama" name="nama" value="<?= $nama ?>">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Tempat Lahir">
+                                    <input type="date" placeholder="Tangal Lahir" name="tgl" value=<?= date('Y-m-d', strtotime($tgl))  ?>>
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Tangal Lahir">
+                                    <input type="number" placeholder="No HP" name="hp" value="<?= $hp ?>">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="No HP">
-                                </div>
-                                <div class="col">
-                                    <input type="text" placeholder="Alamat">
+                                    <input type="text" placeholder="Alamat" name="alamat" value="<?= $alamat ?>">
                                 </div>
                                 <div class="col">
                                     <p>Upload Foto Anda</p>
-                                    <input type="file">
+                                    <input type="file" name="foto">
                                 </div>
                                 <div class="col" style="padding-left: 120px;">
-                                    <button type="submit" class="btn btn-dark">Tambah</button>
+                                    <button type="submit" name="ubah" class="btn btn-dark">Ubah</button>
                                 </div>
                             </div>
                         </form>
