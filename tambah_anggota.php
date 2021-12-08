@@ -1,3 +1,30 @@
+<?php
+include('./db_login.php');
+if (isset($_POST['tambah'])) {
+    $nama = $_POST['nama'];
+    $tgl = $_POST['tgl'];
+    $alamat = $_POST['alamat'];
+    $gambar = $_FILES['foto']['name'];
+    $path = $_FILES['foto']['tmp_name'];
+    move_uploaded_file($path, './Front end/image/' . $gambar);;
+    $email = $_POST['email'];
+    $pwd = $_POST['pwd'];
+    $hp = $_POST['hp'];
+    if ($_FILES['gambar']['name'] == "") {
+        // jika tak upload file
+        $gambar = 'user.png';
+    }
+    $query = $db->query('insert into user(nama_user,email,password,tanggal_lahir,alamat,gambar,hp) values("' . $nama . '","' . $email . '","' . $pwd . '","' . $tgl . '","' . $alamat . '","' . $gambar . '","' . $hp . '")');
+    if (!$query) {
+        die($db->error . $query);
+    } else {
+        $db->close();
+        header('location: ./anggota_admin.php?berhasil=tmbh');
+    }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,40 +54,38 @@
             <div class="bg-tmb">
                 <div class="tmb-buku">
                     <div class="row">
-                        <form action="">
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
                             <div class="hd-tmb">
                                 <div class="col">
                                     <h1>Tambah Anggota</h1>
                                 </div>
                             </div>
+
                             <div class="tmb" style="padding-left: 10%; padding-right: 10%;">
                                 <div class="col">
-                                    <input type="text" placeholder="Email">
+                                    <input type="email" required name="email" placeholder="Email">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Password">
+                                    <input type="text" required name="pwd" placeholder="Password">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Nama">
+                                    <input type="text" required name="nama" placeholder="Nama">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Tempat Lahir">
+                                    <input type="date" required name="tgl" placeholder="Tangal Lahir">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="Tangal Lahir">
+                                    <input type="number" required name="hp" placeholder="No HP">
                                 </div>
                                 <div class="col">
-                                    <input type="text" placeholder="No HP">
-                                </div>
-                                <div class="col">
-                                    <input type="text" placeholder="Alamat">
+                                    <input type="text" required name="alamat" placeholder="Alamat">
                                 </div>
                                 <div class="col">
                                     <p>Upload Foto Anda</p>
-                                    <input type="file">
+                                    <input type="file" name="foto">
                                 </div>
                                 <div class="col" style="padding-left: 120px;">
-                                    <button type="submit" class="btn btn-dark">Tambah</button>
+                                    <button type="submit" name="tambah" class="btn btn-dark">Tambah</button>
                                 </div>
                             </div>
                         </form>

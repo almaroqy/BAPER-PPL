@@ -3,7 +3,11 @@ session_start();
 require_once('db_login.php');
 
 if (isset($_POST["login"])) {
-  $valid = TRUE;
+  $valid = true;
+  echo 'sasasa';
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
 
   //cek validasi email
   $email = isset($_POST['email']) ? $_POST['email'] : '';
@@ -33,8 +37,7 @@ if (isset($_POST["login"])) {
     } else {
       if ($result->num_rows > 0) { //login berhasil
         $row = $result->fetch_object();
-        $_SESSION['username'] = $email;
-        $_SESSION['iduser'] = $row->email;
+        $_SESSION['username'] = $name_user;
         if ($row->tipe == 1) {
           $_SESSION['kategori'] = 'admin';
           header('Location:index_admin.php');
@@ -42,8 +45,6 @@ if (isset($_POST["login"])) {
           $_SESSION['kategori'] = 'user';
           header('Location:index.php');
         }
-
-        
       } else {
         $error_password = "Combination email and password are not correct.";
       }
@@ -86,11 +87,11 @@ if (isset($_POST["login"])) {
         <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplate="off">
           <div class="margin form-group">
             <input class="form-control" type="text" id="email" name="email" placeholder="Email" value="<?php if (isset($email)) {
-                                                                                                            echo $email;
-                                                                                                          } ?>">
+                                                                                                          echo $email;
+                                                                                                        } ?>">
             <div class="text-danger" style="font-size: small; text-align: left;"><?php if (isset($error_email)) {
-                                        echo $error_email;
-                                      } ?></div>
+                                                                                    echo $error_email;
+                                                                                  } ?></div>
           </div>
           <div class="margin form-group">
             <ul class="list-unstyled">
@@ -98,8 +99,8 @@ if (isset($_POST["login"])) {
                 <input class="form-control" type="password" id="password" name="password" placeholder="Password">
 
                 <div class="text-danger" style="font-size: small; text-align: left;"><?php if (isset($error_password)) {
-                                            echo $error_password;
-                                          } ?></div>
+                                                                                        echo $error_password;
+                                                                                      } ?></div>
               </li>
             </ul>
             <div class="ganti-password">
