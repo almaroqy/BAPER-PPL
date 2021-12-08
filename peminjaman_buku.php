@@ -43,14 +43,14 @@ if (isset($_GET["tambah"])) {
         $error_idBuku = "ID buku harus diisi";
         $valid = FALSE;
     } else {
-        $query = "SELECT judul, jumlah_copy from buku where id_buku=" . $idBuku;
+        $query = "SELECT judul, stok_tersedia from buku where id_buku=" . $idBuku;
         $hasil = $db->query($query);
         if (!$hasil) {
             die($db->error);
         } else {
             while ($row = $hasil->fetch_object()) {
                 $judulBuku = $row->judul;
-                $jumlahBuku = $row->jumlah_copy;
+                $jumlahBuku = $row->stok_tersedia;
             }
             if (!isset($judulBuku)) {
                 $error_idBuku = "ID buku tidak ditemukan";
@@ -58,7 +58,7 @@ if (isset($_GET["tambah"])) {
             } elseif ($jumlahBuku == 0) {
                 $error_idBuku = "Stok buku habis";
                 $valid = FALSE;
-            }   
+            }
         }
     }
 
@@ -79,10 +79,13 @@ if (isset($_GET["tambah"])) {
 
         if ($idBuku1 == '') {
             $idBuku1 = $idBuku;
+            $jumlahBuku1 = $jumlahBuku;
         } elseif ($idBuku2 == '') {
             $idBuku2 = $idBuku;
+            $jumlahBuku2 = $jumlahBuku;
         } elseif ($idBuku3 == '') {
             $idBuku3 = $idBuku;
+            $jumlahBuku3 = $jumlahBuku;
         } else {
             $error_idBuku4 = "Max 3 buku dalam 1 sesi peminjaman";
             $valid = FALSE;
@@ -108,6 +111,17 @@ if (isset($_GET["submit"])) {
                                         <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
                                     </div>';
         }
+
+        $query1b = "SELECT stok_tersedia from buku where id_buku=" . $idBuku1;
+        $result1b = $db->query($query1b);
+        if (!$result1b) {
+            die($db->error);
+        } else {
+            $row = $result1b->fetch_object();
+        }
+
+        $query1c = "UPDATE buku SET stok_tersedia = " . ($row->stok_tersedia - 1) . " where id_buku = " . $idBuku1;
+        $result1c = $db->query($query1c);
     }
     if ($idBuku2 != '') {
         $query2 = " INSERT INTO pinjam_buku (id_buku, id_peminjam, status, tanggal_pinjam) VALUES (" . $idBuku2 . "," .
@@ -116,6 +130,17 @@ if (isset($_GET["submit"])) {
         if (!$result2) {
             die("Could not query the database: <br />" . $db->error . '<br>Query2:' . $query2);
         }
+
+        $query2b = "SELECT stok_tersedia from buku where id_buku=" . $idBuku2;
+        $result2b = $db->query($query2b);
+        if (!$result2b) {
+            die($db->error);
+        } else {
+            $row = $result2b->fetch_object();
+        }
+
+        $query2c = "UPDATE buku SET stok_tersedia = " . ($row->stok_tersedia - 1) . " where id_buku = " . $idBuku2;
+        $result2c = $db->query($query2c);
     }
     if ($idBuku3 != '') {
         $query3 = " INSERT INTO pinjam_buku (id_buku, id_peminjam, status, tanggal_pinjam) VALUES (" . $idBuku3 . "," .
@@ -124,6 +149,17 @@ if (isset($_GET["submit"])) {
         if (!$result3) {
             die("Could not query the database: <br />" . $db->error . '<br>Query3:' . $query3);
         }
+
+        $query3b = "SELECT stok_tersedia from buku where id_buku=" . $idBuku3;
+        $result3b = $db->query($query3b);
+        if (!$result3b) {
+            die($db->error);
+        } else {
+            $row = $result3b->fetch_object();
+        }
+
+        $query3c = "UPDATE buku SET stok_tersedia = " . ($row->stok_tersedia - 1) . " where id_buku = " . $idBuku3;
+        $result3c = $db->query($query3c);
     }
 }
 
