@@ -59,57 +59,25 @@ include('./balikkelogin.php');
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <img src="../baper-1/Front end/image/BukuDongeng.png" alt="" style="height: 90px;">
-                                </td>
-                                <td>Pop Ice 1</td>
-                                <td>Fahmi</td>
-                                <td>Fahmi Corp</td>
-                                <td>12</td>
-                                <td>11</td>
-                                <td>
-                                    <div class="actn">
-                                        <a href="" class="btn btn-info btn-md">Edit</a>
-                                        <a href="" class="btn btn-danger btn-md">Hapus</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    <img src="../baper-1/Front end/image/BukuIlmu.png" alt="" style="height: 90px;">
-                                </td>
-                                <td>Pop Ice 1</td>
-                                <td>Fahmi</td>
-                                <td>Fahmi Corp</td>
-                                <td>12</td>
-                                <td>11</td>
-                                <td>
-                                    <div class="actn">
-                                        <a href="" class="btn btn-info btn-md">Edit</a>
-                                        <a href="" class="btn btn-danger btn-md">Hapus</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>
-                                    <img src="../baper-1/Front end/image/BukuHoror.png" alt="" style="height: 90px;">
-                                </td>
-                                <td>Pop Ice 1</td>
-                                <td>Fahmi</td>
-                                <td>Fahmi Corp</td>
-                                <td>12</td>
-                                <td>11</td>
-                                <td>
-                                    <div class="actn">
-                                        <a href="" class="btn btn-info btn-md">Edit</a>
-                                        <a href="" class="btn btn-danger btn-md">Hapus</a>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php
+                            require_once('db_login.php');
+                            $query = "SELECT * FROM buku";
+                            $data = mysqli_query($db, $query);
+                            while ($row = $data->fetch_object()) {
+                                echo '<tr>';
+                                echo '<th>' . $row->id_buku . '</th>';
+                                $image = $row->gambar_buku;
+                                echo '<th>' . '<img src="Front end/image/'.$image.'" width="100">' . '</th>';
+                                echo '<th>' . $row->penulis . '</th>';
+                                echo '<th>' . $row->judul . '</th>';
+                                echo '<th>' . $row->sinopsis . '</th>';
+                                echo '<th>' . $row->jumlah_copy . '</th>';
+                                echo '<th>' . $row->kategori . '</th>';
+                                echo '<th>' . $row->letak_buku . '</th>';
+                                echo '<th>' . $row->tahun_terbit . '</th>';
+                                echo '</tr>';
+                            } 
+                            ?>
                         </tbody>
                     </table>
                 </div>
