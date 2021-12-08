@@ -47,6 +47,7 @@ include('./balikkelogin.php');
                 echo '
                     <div class="alert alert-success alert-dismissible ms-5 me-5 mt-3 text-center d-flex justify-content-center" id="berhasil"  >
                         <h4>Berhasil Menambah Anggota</h4>
+                        <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
                     </div>';
             }
             if ($_GET['berhasil'] == 'edit') {
@@ -60,6 +61,7 @@ include('./balikkelogin.php');
                 echo '
                     <div class="alert alert-success alert-dismissible ms-5 me-5 mt-3 text-center d-flex justify-content-center" id="berhasil" >
                         <h4>Berhasil Hapus Anggota</h4>
+                        <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
                     </div>';
             }
         } ?>

@@ -1,5 +1,23 @@
 <?php
 include('./balikkelogin.php');
+include('./db_login.php');
+
+if (isset($_POST['submit'])) {
+    $nama = $_POST['nama'];
+    $hp = $_POST['hp'];
+    $alamat = $_POST['alamat'];
+    $tgl = 'current_date';
+    $query = $db->query('insert into absennonanggota(nama,hp,alamat,tanggal) values("' . $nama . '","' . $hp . '","' . $alamat . '",' . $tgl . ')');
+    if (!$query) {
+        die($db->error);
+    } else {
+        header('./absen_non_anggota.php');
+    }
+}
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +47,7 @@ include('./balikkelogin.php');
             <div class="bg-tmb">
                 <div class="tmb-buku">
                     <div class="row">
-                        <form action="">
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                             <div class="hd-tmb">
                                 <div class="col">
                                     <h1>Absen Non-Anggota</h1>
@@ -38,19 +56,19 @@ include('./balikkelogin.php');
                             <div class="tmb">
                                 <div class="col">
                                     <p>Nama</p>
-                                    <input type="text">
+                                    <input name="nama" type="text">
                                 </div>
                                 <div class="col">
                                     <p>No. Hp</p>
-                                    <input type="text">
+                                    <input name="hp" type="text">
                                 </div>
                                 <div class="col">
                                     <p>Alamat</p>
-                                    <input type="text">
+                                    <input name="alamat" type="text">
                                 </div>
 
                                 <div class="col" style="padding-left: 90px;">
-                                    <button type="submit" class="btn btn-dark">Submit</button>
+                                    <button type="submit" name="submit" class="btn btn-dark">Submit</button>
                                 </div>
                             </div>
                         </form>

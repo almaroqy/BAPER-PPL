@@ -78,7 +78,7 @@ include('./balikkelogin.php');
                                     <input type="date" required name="tgl" placeholder="Tangal Lahir">
                                 </div>
                                 <div class="col">
-                                    <input type="number" required name="hp" placeholder="No HP">
+                                    <input type="text" required name="hp" placeholder="No HP">
                                 </div>
                                 <div class="col">
                                     <input type="text" required name="alamat" placeholder="Alamat">

@@ -1,5 +1,10 @@
 <?php
 include('./balikkelogin.php');
+include('./db_login.php');
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,12 +41,13 @@ include('./balikkelogin.php');
                 </div>
             </div>
         </div>
-        <div class="container text-center" style="padding-top: 1%; overflow-y:scroll; height: 400px;">
+        <div class="container text-center" style="padding-top: 1%; overflow-y:scroll; ">
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
+
                                 <tr>
                                     <th rules="cols">No</th>
                                     <th>Tanggal</th>
@@ -52,85 +58,29 @@ include('./balikkelogin.php');
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>15/09/2021</td>
-                                    <td>Fauzan</td>
-                                    <td>085836945623</td>
-                                    <td>jl. Berbatu dan berlubang karna kurang dana</td>
+                                <?php
 
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>15/09/2021</td>
-                                    <td>Udin</td>
-                                    <td>085836945623</td>
-                                    <td>jl. Berbatu dan berlubang karna kurang dana</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>15/09/2021</td>
-                                    <td>Amir</td>
-                                    <td>085836945623</td>
-                                    <td>jl. Berbatu dan berlubang karna kurang dana</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>15/09/2021</td>
-                                    <td>Aser</td>
-                                    <td>085836945623</td>
-                                    <td>jl. Berbatu dan berlubang karna kurang dana</td>
+                                $query = $db->query('select * from absennonanggota');
+                                if (!$query) {
+                                    die($db->error);
+                                } else {
+                                    $i = 0;
+                                    while ($row = $query->fetch_object()) {
+                                        $i++;
+                                        echo '
+                                    <tr>
+                                        <td>' . $i . '</td>
+                                        <td>' . $row->tanggal . '</td>
+                                        <td>' . $row->nama . '</td>
+                                        <td>' . $row->hp . '</td>
+                                        <td>' . $row->alamat . '</td>
 
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>15/09/2021</td>
-                                    <td>Yudi</td>
-                                    <td>085836945623</td>
-                                    <td>jl. Berbatu dan berlubang karna kurang dana</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>15/09/2021</td>
-                                    <td>Yudi</td>
-                                    <td>085836945623</td>
-                                    <td>jl. Berbatu dan berlubang karna kurang dana</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>15/09/2021</td>
-                                    <td>Yudi</td>
-                                    <td>085836945623</td>
-                                    <td>jl. Berbatu dan berlubang karna kurang dana</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>15/09/2021</td>
-                                    <td>Yudi</td>
-                                    <td>085836945623</td>
-                                    <td>jl. Berbatu dan berlubang karna kurang dana</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>15/09/2021</td>
-                                    <td>Yudi</td>
-                                    <td>085836945623</td>
-                                    <td>jl. Berbatu dan berlubang karna kurang dana</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>15/09/2021</td>
-                                    <td>Yudi</td>
-                                    <td>085836945623</td>
-                                    <td>jl. Berbatu dan berlubang karna kurang dana</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>15/09/2021</td>
-                                    <td>Yudi</td>
-                                    <td>085836945623</td>
-                                    <td>jl. Berbatu dan berlubang karna kurang dana</td>
-                                </tr>
+                                    </tr>';
+                                    }
+                                }
+
+                                ?>
+
                             </tbody>
                         </table>
                     </div>

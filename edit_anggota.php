@@ -95,7 +95,7 @@ if (isset($_POST['ubah'])) {
                                     <input type="date" placeholder="Tangal Lahir" name="tgl" value=<?= date('Y-m-d', strtotime($tgl))  ?>>
                                 </div>
                                 <div class="col">
-                                    <input type="number" placeholder="No HP" name="hp" value="<?= $hp ?>">
+                                    <input type="text" placeholder="No HP" name="hp" value="<?= $hp ?>">
                                 </div>
                                 <div class="col">
                                     <input type="text" placeholder="Alamat" name="alamat" value="<?= $alamat ?>">
