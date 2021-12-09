@@ -26,10 +26,7 @@ $id = $_GET['id'];
 <body>
     <!-- NAVBAR -->
     <?php
-    include('nav_anggota.php');
-
-
-    
+    include('nav_anggota.php');  
     ?>
 
     <header>
