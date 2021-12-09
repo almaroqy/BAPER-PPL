@@ -1,5 +1,7 @@
 <?php
 include('./balikkelogin.php');
+
+include_once('db_login.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +60,6 @@ include('./balikkelogin.php');
                                             }
                                         }
 
-                                        require_once('db_login.php');
                                         $query = "SELECT * FROM user join pinjam_buku on user.id_user = pinjam_buku.id_peminjam
                                                     JOIN buku on pinjam_buku.id_buku = buku.id_buku
                                                     WHERE tanggal_kembali IS NOT NULL;";

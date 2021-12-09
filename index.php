@@ -48,7 +48,7 @@
           ?>
               <div class="col-sm-6 col-md-6 col-lg-3 pt-3 pb-3">
                 <div class="product">
-                  <div class="card">
+                  <div style="width: 241px;" class="card">
                     <a style="height: 270px;" href="detail_buku.php?<?php echo 'id=' . $row->id_buku ?>"><img style="height: 378px;" src="Front end/image/<?php echo $gambarbuku; ?>" class="card-img-top" /></a>
                     <div class="card-body">
                       <p class="card-text text-center"> <?php echo $judul; ?></p>
