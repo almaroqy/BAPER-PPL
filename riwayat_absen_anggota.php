@@ -24,7 +24,7 @@ include('./db_login.php');
 <body>
     <?php
     include('nav_admin.php');
-    $query = mysqli_query($db, "SELECT * FROM user join absenanggota on user.id_user =  absenanggota.id_anggota");
+    $query = mysqli_query($db, "SELECT * FROM user join absenanggota on user.id_user =  absenanggota.id_anggota ORDER BY id_absen_anggota DESC");
     if (!$query) {
         die($db->error);
     } else {

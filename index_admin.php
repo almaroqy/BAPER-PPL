@@ -100,7 +100,7 @@ $kerr = $db->query($query);
                                     <div class="actn">
                                         <a href="./detail_buku.php?id=' . $row->id_buku . '" class="btn btn-info btn-md">Detail</a>
                                         <a href="./edit_buku.php?id=' . $row->id_buku . '" class="btn btn-warning btn-md">Edit</a>
-                                        <a href="./hapus_buku.php?id=' . $row->id_buku . '" class="btn btn-danger btn-md">Hapus</a>
+                                        <a href="./hapus_buku.php?id=' . $row->id_buku . '" onclick = " return confirm (\'Apakah Anda Yakin Ingin Menghapus?\')" class="btn btn-danger btn-md">Hapus</a>
                                     </div>
                                 </td>
                             </tr>';
