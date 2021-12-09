@@ -45,20 +45,20 @@
               $kategori = $row->kategori;
               $letakbuku = $row->letak_buku;
               $gambarbuku = $row->gambar_buku;
-              ?>
+          ?>
               <div class="col-sm-6 col-md-6 col-lg-3 pt-3 pb-3">
-              <div class="product">
-                <div class="card">
-                  <a  href="detail_buku.php?<?php echo 'id='.$row->id_buku ?>"><img src="Front end/image/<?php echo $gambarbuku; ?>" class="card-img-top" /></a>
-                  <div class="card-body">
-                    <p class="card-text text-center"> <?php echo $judul; ?></p>
+                <div class="product">
+                  <div class="card">
+                    <a href="detail_buku.php?<?php echo 'id=' . $row->id_buku ?>"><img src="Front end/image/<?php echo $gambarbuku; ?>" height="400" width="300" class="card-img-top" /></a>
+                    <div class="card-body">
+                      <p class="card-text text-center"> <?php echo $judul; ?></p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <?php }
-          } ?>  
-        
+          <?php }
+          } ?>
+
         </div>
       </div>
     </section>

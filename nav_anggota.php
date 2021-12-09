@@ -7,7 +7,9 @@ require_once('db_login.php');
   <div class="container">
     <div class="nav">
       <h1><img src="Front end/image/Group 12.png" alt="logo"></h1>
-      <form action="./detail_buku.php?id=<?php echo $row->id_buku?>">
+      <form id="cari" action="./detail_buku.php?id=" <?php if (isset($row->id_buku)) {
+                                                        echo $row->id_buku;
+                                                      } ?>>
         <div>
           <i class="fas fa-search"></i>
           <input list="id" name="id" placeholder="SEARCH" />
