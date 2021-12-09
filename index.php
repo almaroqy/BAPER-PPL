@@ -31,7 +31,7 @@
       <div class="container">
         <div class="row gx-3">
           <?php
-          include('./db_login.php');
+          include_once('./db_login.php');
           $query = $db->query('select * from buku');
           if (!$query) {
             die($db->error);
