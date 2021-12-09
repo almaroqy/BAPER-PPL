@@ -203,6 +203,7 @@ if (isset($_GET["submit"])) {
                             <h1>
                                 Detail
                             </h1>
+
                             <div class="mb-3 dtl-anggota">
                                 <label for="anggota" class="form-label">Anggota</label>
                                 <input type="text" class="form-control" id="anggota" readonly="readonly" value="<?php if (isset($namaAnggota)) echo $namaAnggota ?>">
