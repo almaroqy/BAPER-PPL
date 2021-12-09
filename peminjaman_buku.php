@@ -184,14 +184,14 @@ if (isset($_GET["submit"])) {
                             <div class="input-id">
                                 <div class="mb-3 anggota">
                                     <label for="idAnggota" class="form-label">Id Anggota</label>
-                                    <input type="text" class="form-control" id="idAnggota" name="idAnggota" value="<?php if (isset($idAnggota)) echo $idAnggota; ?>">
+                                    <input type="text" class="form-control" id="idAnggota" name="idAnggota" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" value="<?php if (isset($idAnggota)) echo $idAnggota; ?>">
                                     <div class="text-danger">
                                         <?php if (isset($error_idAnggota)) echo $error_idAnggota; ?>
                                     </div>
                                 </div>
                                 <div class="mb-3 anggota">
                                     <label for="idBuku" class="form-label">Id Buku</label>
-                                    <input type="text" class="form-control" id="idBuku" name="idBuku">
+                                    <input type="text" class="form-control" id="idBuku" name="idBuku" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                                     <div class="text-danger">
                                         <?php if (isset($error_idBuku)) echo $error_idBuku; ?>
                                     </div>
@@ -205,13 +205,13 @@ if (isset($_GET["submit"])) {
                             </h1>
                             <div class="mb-3 dtl-anggota">
                                 <label for="anggota" class="form-label">Anggota</label>
-                                <input type="text" class="form-control" id="anggota" value="<?php if (isset($namaAnggota)) echo $namaAnggota ?>">
+                                <input type="text" class="form-control" id="anggota" readonly="readonly" value="<?php if (isset($namaAnggota)) echo $namaAnggota ?>">
                             </div>
                             <div class="mb-3 dtl-anggota ">
                                 <label for="idBuku" class="form-label">Buku</label>
-                                <input type="text" class="mb-1 form-control" id="idBuku1" name="idBuku1" value="<?php if (isset($idBuku1)) echo $idBuku1 ?>">
-                                <input type="text" class="mb-1 form-control" id="idBuku2" name="idBuku2" value="<?php if (isset($idBuku2)) echo $idBuku2 ?>">
-                                <input type="text" class="mb-1 form-control" id="idBuku3" name="idBuku3" value="<?php if (isset($idBuku3)) echo $idBuku3 ?>">
+                                <input type="text" class="mb-1 form-control" id="idBuku1" name="idBuku1" readonly="readonly" value="<?php if (isset($idBuku1)) echo $idBuku1 ?>">
+                                <input type="text" class="mb-1 form-control" id="idBuku2" name="idBuku2" readonly="readonly" value="<?php if (isset($idBuku2)) echo $idBuku2 ?>">
+                                <input type="text" class="mb-1 form-control" id="idBuku3" name="idBuku3" readonly="readonly" value="<?php if (isset($idBuku3)) echo $idBuku3 ?>">
                                 <div class="text-danger">
                                     <?php if (isset($error_idBuku4)) echo $error_idBuku4; ?>
                                 </div>

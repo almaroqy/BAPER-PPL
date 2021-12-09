@@ -1,5 +1,6 @@
 <?php
 include('./balikkelogin.php');
+require_once('db_login.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +45,6 @@ include('./balikkelogin.php');
                                     </thead>
                                     <tbody>
                                         <?php
-                                            require_once('db_login.php');
                                             $query = "SELECT id_pinjam, gambar_buku, judul, tanggal_pinjam, batas_pinjam, nama_user
                                                         FROM pinjam_buku JOIN buku ON pinjam_buku.id_buku = buku.id_buku
                                                         JOIN user ON pinjam_buku.id_peminjam = user.id_user
