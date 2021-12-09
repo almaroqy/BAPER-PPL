@@ -61,7 +61,8 @@ require_once('db_login.php');
 
                                         $query = "SELECT * FROM user join pinjam_buku on user.id_user = pinjam_buku.id_peminjam
                                                     JOIN buku on pinjam_buku.id_buku = buku.id_buku
-                                                    WHERE UNIX_TIMESTAMP(tanggal_kembali) != 0";
+                                                    WHERE UNIX_TIMESTAMP(tanggal_kembali) != 0
+                                                    ORDER BY tanggal_pinjam DESC";
                                         $result = mysqli_query($db, $query);
                                         while ($row = $result->fetch_object()) {
                                             echo '<tr>';
