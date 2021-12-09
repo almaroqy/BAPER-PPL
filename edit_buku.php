@@ -18,10 +18,9 @@ if (isset($_POST['edit'])) {
     $path = $_FILES['gambar-buku']['tmp_name'];
     move_uploaded_file($path, './Front end/image/' . $gambarbuku);
     if ($gambarbuku != '') {
-
         $query = $db->query('UPDATE buku SET sinopsis = "' . $sinopsis . '",penulis="' . $penulis . '",judul="' . $judul . '",jumlah_copy="' . $jumlahcopy . '",kategori="' . $kategori . '",letak_buku="' . $letakbuku . '",tahun_terbit="' . $tahunterbit . '",gambar_buku="' . $gambarbuku . '",stok_tersedia=' . $stokada . ' WHERE id_buku=' . $id);
     } else {
-        $query = $db->query('UPDATE buku SET sinopsis = "' . $sinopsis . '",penulis="' . $penulis . '",judul="' . $judul . '",jumlah_copy="' . $jumlahcopy . '",kategori="' . $kategori . '",letak_buku="' . $letakbuku . '",tahun_terbit="' . $tahunterbit . '",gambar_buku="' . $gambarbuku . '",stok_tersedia=' . $stokada . ' WHERE id_buku=' . $id);
+        $query = $db->query('UPDATE buku SET sinopsis = "' . $sinopsis . '",penulis="' . $penulis . '",judul="' . $judul . '",jumlah_copy="' . $jumlahcopy . '",kategori="' . $kategori . '",letak_buku="' . $letakbuku . '",tahun_terbit="' . $tahunterbit . '",stok_tersedia=' . $stokada . ' WHERE id_buku=' . $id);
     }
     echo $query;
     if (!$query) {

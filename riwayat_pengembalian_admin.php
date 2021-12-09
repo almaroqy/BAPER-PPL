@@ -45,19 +45,7 @@ require_once('db_login.php');
                                     </thead>
                                     <tbody>
                                         <?php
-                                        function denda($tgl1, $tgl2)
-                                        {
-                                            $batas = new DateTime($tgl1);
-                                            $kembali = new DateTime($tgl2);
-                                            $jarak = $kembali->diff($batas);
-
-                                            $selisih = $jarak->d;
-                                            if ($selisih > 7) {
-                                                return 1000 * $selisih;
-                                            } else {
-                                                return 0;
-                                            }
-                                        }
+                                        include('./denda.php');
 
                                         $query = "SELECT * FROM user join pinjam_buku on user.id_user = pinjam_buku.id_peminjam
                                                     JOIN buku on pinjam_buku.id_buku = buku.id_buku

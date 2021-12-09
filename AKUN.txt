@@ -1,0 +1,7 @@
+Anggota :
+email = muhan@mail.com
+password = 1234
+
+Admin :
+email = admin@mail.com
+password = 1234
