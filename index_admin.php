@@ -30,9 +30,7 @@ $kerr = $db->query($query);
         <div class="container" style="padding-top: 13%; ">
             <div class="row">
                 <div class="col">
-                    <form method="GET">
-                        <input type="text" name="search_title" id="search_title" placeholder="Cari Buku" class="form-control" value="" onkeyup="forIndex()">
-                    </form>
+
                 </div>
             </div>
         </div>

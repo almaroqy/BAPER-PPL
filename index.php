@@ -18,7 +18,7 @@
 
 <body>
   <?php
-  include('nav_anggota.php');
+  include('./nav_anggota.php');
   ?>
   <!-- HEADER -->
   <header>

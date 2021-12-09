@@ -6,9 +6,26 @@
     <div class="container">
         <div class="nav">
             <h1><img src="Front end/image/Group 12.png" alt="logo"></h1>
-            <form action="">
-                <i class="fas fa-search"></i>
-                <input type="search" name="search" placeholder="SEARCH" />
+            <form id="cari" action="./detail_buku.php?id=" <?php if (isset($row->id_buku)) {
+                                                                echo $row->id_buku;
+                                                            } ?>>
+                <div>
+                    <i class="fas fa-search"></i>
+                    <input list="id" name="id" placeholder="SEARCH" />
+                    <datalist id="id">
+                        <?php
+                        $query = " SELECT id_buku, judul FROM buku ORDER BY judul ";
+                        $result = mysqli_query($db, $query);
+                        if (!$result) {
+                            die("Could not query the database: <br />" . $db->error);
+                        }
+                        while ($row = $result->fetch_object()) {
+                            echo '<option value="' . $row->id_buku . '">' . $row->judul . '</option>';
+                        }
+                        $result->free();
+                        ?>
+                    </datalist>
+                </div>
             </form>
             <ul>
                 <li class="dropdown">

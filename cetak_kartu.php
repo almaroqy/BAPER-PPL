@@ -1,7 +1,5 @@
 <?php
 $id = $_GET['id'];
-include './barcode.php';
-
 require_once('db_login.php');
 include('./balikkelogin.php');
 $kerr = $db->query("select * from user WHERE id_user = $id");
@@ -23,6 +21,9 @@ $kerr = $db->query("select * from user WHERE id_user = $id");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <link rel="stylesheet" href="Front end/style/cetak_kartu.css" />
     <title>Baper!</title>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="jquery-barcode.js"></script>
 </head>
 
 <body>
@@ -34,24 +35,33 @@ $kerr = $db->query("select * from user WHERE id_user = $id");
                     <table>
                         <td>
                             <div class="cover">
-                                <img width="100px" class="cover-buku" src="Front end/image/<?php
-                                                                                            while ($row = $kerr->fetch_object()) {
-                                                                                                echo $row->gambar ?>">
+                                <img width="100px" class="cover-buku" src="Front end/image/
+                                <?php
+                                while ($row = $kerr->fetch_object()) {
+                                    echo $row->gambar ?>">
 
                             </div>
+                            <div class="pt-2 d-flex justify-content-center">
+                                <?php
+                                    require 'vendor/autoload.php';
 
-                            <div class="pt-2 d-flex justify-content-center"><?php echo bar128("$id"); ?></div>
+                                    $redColor = [255, 0, 0];
+
+                                    $generator = new Picqer\Barcode\BarcodeGeneratorPNG();
+                                    file_put_contents('barcode.png', $generator->getBarcode("$id", $generator::TYPE_CODE_128, 3, 50, $redColor)); ?></div>
+                            <div id="demo"></div>
+
                         </td>
                         <td>
                             <div class="row ms-2">
                                 <div class="col-md-12">
                                     <div class="info">
                                     <?php
-                                                                                                echo '<h1>' . $row->nama_user . '</h1>';
-                                                                                                echo '<p> Tanggal Lahir : ' . $row->tanggal_lahir . '</p>';
-                                                                                                echo '<p> alamat : ' . $row->alamat . '</p>';
-                                                                                                echo '<p> email : ' . $row->email . '</p>';
-                                                                                            } ?>
+                                    echo '<h1>' . $row->nama_user . '</h1>';
+                                    echo '<p> Tanggal Lahir : ' . $row->tanggal_lahir . '</p>';
+                                    echo '<p> alamat : ' . $row->alamat . '</p>';
+                                    echo '<p> email : ' . $row->email . '</p>';
+                                } ?>
                                     </div>
                                 </div>
                             </div>
