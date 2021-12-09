@@ -98,7 +98,8 @@ $kerr = $db->query($query);
                                     echo '<th>' . $row->stok_tersedia . '</th>';
                                     echo '<td>
                                     <div class="actn">
-                                        <a href="./edit_buku.php?id=' . $row->id_buku . '" class="btn btn-info btn-md">Edit</a>
+                                        <a href="./detail_buku.php?id=' . $row->id_buku . '" class="btn btn-info btn-md">Detail</a>
+                                        <a href="./edit_buku.php?id=' . $row->id_buku . '" class="btn btn-warning btn-md">Edit</a>
                                         <a href="./hapus_buku.php?id=' . $row->id_buku . '" class="btn btn-danger btn-md">Hapus</a>
                                     </div>
                                 </td>
