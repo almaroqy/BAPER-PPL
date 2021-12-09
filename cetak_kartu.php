@@ -53,11 +53,11 @@ $kerr = $db->query("select * from user WHERE id_user = $id");
                         <div class="col-md-12">
                             <div class="info">
                             <?php
-                                                                                        echo '<h1>' . $row->nama_user . '</h1>';
+                                                                                        echo '<h1>' . strtoupper($row->nama_user) . '</h1>';
                                                                                         echo '<hr style="color:black;">';
-                                                                                        echo '<p> Tanggal Lahir : ' . $row->tanggal_lahir . '</p>';
-                                                                                        echo '<p> alamat : ' . $row->alamat . '</p>';
-                                                                                        echo '<p> email : ' . $row->email . '</p>';
+                                                                                        echo '<p> TANGGAL LAHIR : ' . $row->tanggal_lahir . '</p>';
+                                                                                        echo '<p> ALAMAT : ' . $row->alamat . '</p>';
+                                                                                        echo '<p> EMAIL : ' . $row->email . '</p>';
                                                                                     } ?>
                             </div>
                         </div>
