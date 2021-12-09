@@ -20,6 +20,16 @@ class ComposerStaticInit0a7a13103504bd68a5f300c0120422b1
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'I' => 
+        array (
+            'Imagick' => 
+            array (
+                0 => __DIR__ . '/..' . '/calcinai/php-imagick/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -29,6 +39,7 @@ class ComposerStaticInit0a7a13103504bd68a5f300c0120422b1
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit0a7a13103504bd68a5f300c0120422b1::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit0a7a13103504bd68a5f300c0120422b1::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit0a7a13103504bd68a5f300c0120422b1::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit0a7a13103504bd68a5f300c0120422b1::$classMap;
 
         }, null, ClassLoader::class);

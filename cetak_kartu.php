@@ -29,47 +29,44 @@ $kerr = $db->query("select * from user WHERE id_user = $id");
 <body>
 
     <header>
-        <div class="container text-center" style="padding-top: 12%; width: 28%; height: 80%;">
-            <div class="bg-inf">
-                <div class="info-buku">
-                    <table>
-                        <td>
-                            <div class="cover">
-                                <img width="100px" class="cover-buku" src="Front end/image/
-                                <?php
-                                while ($row = $kerr->fetch_object()) {
-                                    echo $row->gambar ?>">
+        <div class="container text-center" style="padding-top: 12%; width: 500px; height: 80%;border: solid 1px black;padding:20pt">
+            <table>
+                <td>
+                    <div class="cover">
+                        <img width="100px" class="cover-buku" src="Front end/image/<?php while ($row = $kerr->fetch_object()) {
+                                                                                        echo $row->gambar ?>">
 
+                    </div>
+                    <div class="pt-2 d-flex justify-content-center">
+
+                        <?php
+
+                                                                                        require 'vendor/autoload.php';
+                                                                                        $generator = new Picqer\Barcode\BarcodeGeneratorPNG();
+                                                                                        echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode('081231723897', $generator::TYPE_CODE_128)) . '">';                                ?>
+                    </div>
+                    <div id="demo"></div>
+
+                </td>
+                <td>
+                    <div class="row ms-2">
+                        <div class="col-md-12">
+                            <div class="info">
+                            <?php
+                                                                                        echo '<h1>' . $row->nama_user . '</h1>';
+                                                                                        echo '<hr style="color:black;">';
+                                                                                        echo '<p> Tanggal Lahir : ' . $row->tanggal_lahir . '</p>';
+                                                                                        echo '<p> alamat : ' . $row->alamat . '</p>';
+                                                                                        echo '<p> email : ' . $row->email . '</p>';
+                                                                                    } ?>
                             </div>
-                            <div class="pt-2 d-flex justify-content-center">
-                                <?php
-                                    require 'vendor/autoload.php';
+                        </div>
+                    </div>
+                </td>
+            </table>
+        </div>
 
-                                    $redColor = [255, 0, 0];
-
-                                    $generator = new Picqer\Barcode\BarcodeGeneratorPNG();
-                                    file_put_contents('barcode.png', $generator->getBarcode("$id", $generator::TYPE_CODE_128, 3, 50, $redColor)); ?></div>
-                            <div id="demo"></div>
-
-                        </td>
-                        <td>
-                            <div class="row ms-2">
-                                <div class="col-md-12">
-                                    <div class="info">
-                                    <?php
-                                    echo '<h1>' . $row->nama_user . '</h1>';
-                                    echo '<p> Tanggal Lahir : ' . $row->tanggal_lahir . '</p>';
-                                    echo '<p> alamat : ' . $row->alamat . '</p>';
-                                    echo '<p> email : ' . $row->email . '</p>';
-                                } ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </table>
-                </div>
-
-            </div>
+        </div>
         </div>
         </div>
     </header>
