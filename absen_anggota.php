@@ -90,7 +90,7 @@ if (isset($_GET['submit'])) {
                         <div class="mb-3">
                             <input type="text" id="idanggota" name="idanggota" class="form-control" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                         </div>
-                        <button type="submit" id="submit" name="submit" class="btn btn-dark btn-submit mt-3">SUBMIT</button>
+                        <button type="submit" id="submit" name="submit" hidden class="btn btn-dark btn-submit mt-3">SUBMIT</button>
                     </form>
                     <div class="bukan-anggota mt-3">
                         <a class="" href="absen_non_anggota.php">Bukan Anggota</a>
