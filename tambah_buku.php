@@ -9,7 +9,7 @@ if (isset($_POST['tambah'])) {
     $jumlahcopy = $_POST["jumlah-copy"];
     $stokada = $_POST['stokada'];
     // filter_input(INPUT_POST, 'hospital', FILTER_SANITIZE_STRING);
-
+    $sinopsis = $_POST['sinopsis'];
     $kategori = $_POST["kategori"];
     $letakbuku = $_POST["letak-buku"];
     $gambarbuku = $_FILES['foto']['name'];
@@ -19,7 +19,7 @@ if (isset($_POST['tambah'])) {
     //     // jika tak upload file
     //     $gambarbuku = 'book.png';
     // }
-    $sql = "INSERT INTO buku (penulis,judul,jumlah_copy,kategori,letak_buku,tahun_terbit,gambar_buku,stok_tersedia) VALUES ('$penulis','$judul','$jumlahcopy','$kategori','$letakbuku','$tahunterbit','$gambarbuku','$jumlahcopy')";
+    $sql = "INSERT INTO buku (penulis,judul,jumlah_copy,kategori,letak_buku,tahun_terbit,gambar_buku,stok_tersedia,sinopsis) VALUES ('$penulis','$judul','$jumlahcopy','$kategori','$letakbuku','$tahunterbit','$gambarbuku','$jumlahcopy','$sinopsis')";
 
     //Kondisi apakah berhasil atau tidak
     if (mysqli_query($db, $sql)) {
@@ -83,6 +83,9 @@ if (isset($_POST['tambah'])) {
                                 </div>
                                 <div class="col">
                                     <input type="text" placeholder="Letak Buku" name="letak-buku">
+                                </div>
+                                <div class="col">
+                                    <input type="text" placeholder="Sinopsis" name="sinopis">
                                 </div>
                                 <div class="col">
                                     <p>Upload Cover Buku</p>

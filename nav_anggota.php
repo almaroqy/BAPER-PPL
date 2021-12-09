@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
+
+>>>>>>> bc90436954b846a3a9b9b577726bd523f3d22291
 session_start();
 require_once('db_login.php');
 ?>

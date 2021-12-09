@@ -43,9 +43,9 @@ $kerr = $db->query("select * from user WHERE id_user = $id");
 
                                                                                         require 'vendor/autoload.php';
                                                                                         $generator = new Picqer\Barcode\BarcodeGeneratorPNG();
-                                                                                        echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode('081231723897', $generator::TYPE_CODE_128)) . '">';                                ?>
+                                                                                        echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode('081231723897', $generator::TYPE_CODE_128)) . '">';; ?>
                     </div>
-                    <div id="demo"></div>
+                    <div id="demo"><?= $row->id_user ?></div>
 
                 </td>
                 <td>

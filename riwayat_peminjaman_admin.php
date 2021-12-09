@@ -1,4 +1,6 @@
 <?php
+
+include_once('db_login.php');
 include('./balikkelogin.php');
 require_once('db_login.php');
 ?>
@@ -45,23 +47,27 @@ require_once('db_login.php');
                                     </thead>
                                     <tbody>
                                         <?php
+<<<<<<< HEAD
                                             $query = "SELECT id_pinjam, gambar_buku, judul, tanggal_pinjam, batas_pinjam, nama_user
+=======
+                                        $query = "SELECT id_pinjam, gambar_buku, judul, tanggal_pinjam, batas_pinjam, nama_user
+>>>>>>> bc90436954b846a3a9b9b577726bd523f3d22291
                                                         FROM pinjam_buku JOIN buku ON pinjam_buku.id_buku = buku.id_buku
                                                         JOIN user ON pinjam_buku.id_peminjam = user.id_user
                                                         ORDER BY pinjam_buku.tanggal_pinjam DESC";
 
-                                            $result = mysqli_query($db, $query);
-                                            while ($row = $result->fetch_object()) {
-                                                echo '<tr>';
-                                                echo '<th>' . $row->id_pinjam . '</th>';
-                                                $image = $row->gambar_buku;
-                                                echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
-                                                echo '<th>' . $row->judul . '</th>';
-                                                echo '<th>' . $row->tanggal_pinjam . '</th>';
-                                                echo '<th>' . $row->batas_pinjam . '</th>';
-                                                echo '<th>' . $row->nama_user . '</th>';
-                                                echo '</tr>';
-                                            }
+                                        $result = mysqli_query($db, $query);
+                                        while ($row = $result->fetch_object()) {
+                                            echo '<tr>';
+                                            echo '<th>' . $row->id_pinjam . '</th>';
+                                            $image = $row->gambar_buku;
+                                            echo '<th>' . '<img src="Front end/image/' . $image . '" width="100">' . '</th>';
+                                            echo '<th>' . $row->judul . '</th>';
+                                            echo '<th>' . $row->tanggal_pinjam . '</th>';
+                                            echo '<th>' . $row->batas_pinjam . '</th>';
+                                            echo '<th>' . $row->nama_user . '</th>';
+                                            echo '</tr>';
+                                        }
                                         ?>
                                     </tbody>
                                 </table>
