@@ -6,6 +6,7 @@ $kerr = $db->query($query);
 
 include('./balikkelogin.php');
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
