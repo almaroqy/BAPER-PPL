@@ -88,7 +88,7 @@ if (isset($_GET['submit'])) {
 
                     <form id="absen" action="<?php $_SERVER['PHP_SELF'] ?>" method="GET">
                         <div class="mb-3">
-                            <input type="text" id="idanggota" name="idanggota" class="form-control">
+                            <input type="text" id="idanggota" name="idanggota" class="form-control" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                         </div>
                         <button type="submit" id="submit" name="submit" class="btn btn-dark btn-submit mt-3">SUBMIT</button>
                     </form>
