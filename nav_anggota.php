@@ -1,6 +1,7 @@
 <?php
-session_start();
+error_reporting(0);
 require_once('db_login.php');
+session_start();
 ?>
 <!-- NAVBAR -->
 <nav id="bg-nav" class="">
