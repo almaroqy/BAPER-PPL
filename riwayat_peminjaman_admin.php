@@ -47,11 +47,7 @@ require_once('db_login.php');
                                     </thead>
                                     <tbody>
                                         <?php
-<<<<<<< HEAD
-                                            $query = "SELECT id_pinjam, gambar_buku, judul, tanggal_pinjam, batas_pinjam, nama_user
-=======
                                         $query = "SELECT id_pinjam, gambar_buku, judul, tanggal_pinjam, batas_pinjam, nama_user
->>>>>>> bc90436954b846a3a9b9b577726bd523f3d22291
                                                         FROM pinjam_buku JOIN buku ON pinjam_buku.id_buku = buku.id_buku
                                                         JOIN user ON pinjam_buku.id_peminjam = user.id_user
                                                         ORDER BY pinjam_buku.tanggal_pinjam DESC";
