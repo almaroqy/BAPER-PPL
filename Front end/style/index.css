@@ -8,12 +8,12 @@
 }
 
 .section-listproduct .card {
-  width: 241px;
+  width: 100px;
   height: 380px;
 }
 
 .section-listproduct .card img {
-  height: 100px;
+  height: 10px;
 }
 
 .section-listproduct .card .card-text {
