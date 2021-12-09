@@ -1,4 +1,5 @@
 <?php
+include('./balikkelogin.php');
 include('./db_login.php');
 $query = "select * from buku";
 $kerr = $db->query($query);
