@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+require_once('db_login.php');
+?>
 
 <head>
   <!-- Required meta tags -->
@@ -18,7 +21,7 @@
 
 <body>
   <?php
-  include('./nav_anggota.php');
+  include('nav_anggota.php');
   ?>
   <!-- HEADER -->
   <header>
