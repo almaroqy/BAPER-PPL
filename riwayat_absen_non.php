@@ -60,7 +60,7 @@ include('./db_login.php');
                             <tbody>
                                 <?php
 
-                                $query = $db->query('select * from absennonanggota');
+                                $query = $db->query('select * from absennonanggota ORDER BY id_absen_non_anggota DESC');
                                 if (!$query) {
                                     die($db->error);
                                 } else {
