@@ -25,7 +25,12 @@ $id = $_GET['id'];
 <body>
     <!-- NAVBAR -->
     <?php
-    include('nav_anggota.php');  
+    session_start();
+    if ($_SESSION['kategori'] == 'admin') {
+        include('nav_admin.php');  
+    } else {
+        include('nav_anggota.php');  
+    }
     ?>
 
     <header>
