@@ -108,13 +108,8 @@ if (isset($_POST["login"])) {
             </div>
             <div class="row">
               <div class="col">
-                <div class=" text-start ">
+                <div class=" text-center ">
                   <a href="signup.php" style="text-decoration: none;color:black;font-size:small">Daftar</a>
-                </div>
-              </div>
-              <div class="col">
-                <div class=" text-end ">
-                  <a href="lupa_password.php" style="text-decoration: none;color:black;font-size:small">Lupa Password</a>
                 </div>
               </div>
             </div>

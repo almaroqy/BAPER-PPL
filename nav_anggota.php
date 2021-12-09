@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once('db_login.php');
 ?>
 
 <!-- NAVBAR -->
@@ -7,9 +7,24 @@ session_start();
   <div class="container">
     <div class="nav">
       <h1><img src="Front end/image/Group 12.png" alt="logo"></h1>
-      <form action="">
-        <i class="fas fa-search"></i>
-        <input style="width: 450px;" type="search" name="search" placeholder="SEARCH" />
+      <form action="./detail_buku.php?id=<?php echo $row->id_buku?>">
+        <div>
+          <i class="fas fa-search"></i>
+          <input list="id" name="id" placeholder="SEARCH" />
+          <datalist id="id">
+            <?php
+            $query = " SELECT id_buku, judul FROM buku ORDER BY judul ";
+            $result = mysqli_query($db, $query);
+            if (!$result) {
+              die("Could not query the database: <br />" . $db->error);
+            }
+            while ($row = $result->fetch_object()) {
+              echo '<option value="' . $row->id_buku . '">' . $row->judul . '</option>';
+            }
+            $result->free();
+            ?>
+          </datalist>
+        </div>
       </form>
       <ul>
         <li class="dropdown">
