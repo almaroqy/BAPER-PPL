@@ -115,7 +115,7 @@ include('./balikkelogin.php');
                                 <td>
                                     <div class="actn">
                                         <a href="./edit_anggota.php?id=' . $id . '" class="btn btn-info btn-md">Edit</a>
-                                        <a href="./hapus_anggota.php?id=' . $id . '" class="btn btn-danger btn-md">Hapus</a>
+                                        <a href="./hapus_anggota.php?id=' . $id . '" onclick = " return confirm (\'Apakah Anda Yakin Ingin Menghapus?\')"  class="btn btn-danger btn-md">Hapus</a>
                                         <a href="./cetak_kartu.php?id=' . $id . '" class="btn btn-warning btn-md">Cetak Kartu</a>
                                     </div>
                                 </td>
