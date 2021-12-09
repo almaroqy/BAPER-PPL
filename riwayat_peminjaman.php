@@ -56,7 +56,7 @@
                                             $query = "SELECT id_pinjam, gambar_buku, judul, tanggal_pinjam, batas_pinjam
                                                         FROM pinjam_buku JOIN buku ON pinjam_buku.id_buku = buku.id_buku
                                                         JOIN user ON pinjam_buku.id_peminjam = user.id_user
-                                                        WHERE nama_user='".$_SESSION['username']."' AND ISNULL(tanggal_kembali)";
+                                                        WHERE nama_user='" . $_SESSION['username'] . "' AND ISNULL(tanggal_kembali)";
                                             $result = mysqli_query($db, $query);
                                             while ($row = $result->fetch_object()) {
                                                 echo '<tr>';
@@ -103,11 +103,12 @@
                                         </thead>
                                         <tbody>
                                             <?php
+
                                             require_once('db_login.php');
                                             $query = "SELECT id_pinjam, gambar_buku, judul, tanggal_pinjam, tanggal_kembali, batas_pinjam
                                                         FROM pinjam_buku JOIN buku ON pinjam_buku.id_buku = buku.id_buku
                                                         JOIN user ON pinjam_buku.id_peminjam = user.id_user
-                                                        WHERE nama_user='".$_SESSION['username']."' && !ISNULL(tanggal_kembali)
+                                                        WHERE nama_user='" . $_SESSION['username'] . "' && !ISNULL(tanggal_kembali)
                                                         ORDER BY id_pinjam DESC, tanggal_kembali DESC";
                                             $result = mysqli_query($db, $query);
                                             while ($row = $result->fetch_object()) {
