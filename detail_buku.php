@@ -1,7 +1,6 @@
 <?php
 $id = $_GET['id'];
  require_once('db_login.php');
- include('./balikkelogin.php');
  $kerr = $db->query("select * from buku WHERE id_buku = $id");
 ?>
 
